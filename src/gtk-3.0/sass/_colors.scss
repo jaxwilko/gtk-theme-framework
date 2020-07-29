@@ -1,0 +1,134 @@
+// When color definition differs for dark and light variant,
+// it gets @if ed depending on $variant
+
+$palenight_background:  #292D3E;
+$palenight_foreground:  #32364C;
+$palenight_divider:     #4D5478;
+$palenight_comment:     #676E95;
+$palenight_accent:      #AB47BC;
+$palenight_red:         #FF5370;
+$palenight_orange:      #F78C6C;
+$palenight_yellow:      #FFCB6B;
+$palenight_green:       #C3E88D;
+$palenight_blue:        #82AAFF;
+$palenight_purple:      #C792EA;
+$palenight_text:        #EAEAEA;
+
+$higher_opacity: 0.87;
+$middle_opacity: 0.54;
+$lower_opacity: 0.24;
+
+$enabled_opacity: 0.75;
+$hint_opacity: 0.6;
+$disabled_opacity: 0.4;
+
+@function gtkalpha($c, $a) {
+    @return unquote("alpha(#{$c}, #{$a})");
+}
+
+@function scale-alpha($c, $a) {
+    @return scale-color($c, $alpha: percentage(-1 + $a));
+}
+
+// Foreground colors
+$light_contrast_color: scale-alpha(#000000, 0.8);
+$dark_contrast_color: #FFFFFF;
+
+// used for many things including text
+$darker_contrast_color: $palenight_text;
+$darkest_contrast_color: #000000;
+
+$fg_color: $darker_contrast_color;
+$secondary_fg_color: scale-alpha($fg_color, $enabled_opacity);
+$tertiary_fg_color: scale-alpha($fg_color, $hint_opacity);
+
+$inversed_fg_color: $dark_contrast_color;
+$secondary_inversed_fg_color: scale-alpha($inversed_fg_color, $enabled_opacity);
+$tertiary_inversed_fg_color: scale-alpha($inversed_fg_color, $hint_opacity);
+
+$disabled_fg_color: scale-alpha($fg_color, $disabled_opacity);
+$disabled_secondary_fg_color: scale-alpha($secondary_fg_color, $disabled_opacity);
+$disabled_tertiary_fg_color: scale-alpha($tertiary_fg_color, $disabled_opacity);
+
+$disabled_inversed_fg_color: scale-alpha($inversed_fg_color, $disabled_opacity);
+$disabled_secondary_inversed_fg_color: scale-alpha($secondary_inversed_fg_color, $disabled_opacity);
+$disabled_tertiary_inversed_fg_color: scale-alpha($tertiary_inversed_fg_color, $disabled_opacity);
+
+// Background colors
+$bg_color: $palenight_background;
+$base_color: $palenight_background;
+
+$alt_base_color: $palenight_background;
+
+$lighter_bg_color: $palenight_foreground;
+$darker_bg_color: $palenight_background;
+$darker_fg_color: $palenight_comment;
+
+// this is headerbar text colour (i.e. chrome tab text)
+$headerbar_fg_color: $darker_contrast_color;
+$secondary_headerbar_fg_color: $palenight_text;
+$disabled_headerbar_fg_color: $disabled_secondary_inversed_fg_color;
+
+$headerbar_bg_color: $palenight_background;
+
+// Selected and Theme colors
+$primary_color: $palenight_comment;
+$alt_primary_color: $palenight_yellow;
+$accent_color: $palenight_green;
+
+$theme_color: $palenight_purple;
+$alt_theme_color: $palenight_foreground;
+
+$inverse_theme_color: #3B3F5A;
+$alt_inverse_theme_color: $palenight_comment;
+
+$topbar_theme_color: $theme_color;
+$alt_topbar_theme_color: #3B3F5A;
+
+
+$menu_bg_color: $palenight_background;
+
+// this is menu title colour
+$menu_fg_color: $palenight_text;
+
+$disabled_menu_fg_color: rgba($menu_fg_color, 0.3);
+
+$tab_color: $palenight_green;
+
+$secondary_titlebar_color: $primary_color;
+
+$topbar_bg_color: $palenight_background;
+
+$topbar_fg_color: $dark_contrast_color;
+$alt_topbar_fg_color: $darker_contrast_color;
+
+// Misc colors
+$track_color: gtkalpha(currentColor, $lower_opacity);
+$high_track_color: gtkalpha(currentColor, $disabled_opacity);
+$semi_track_color: gtkalpha(currentColor, $lower_opacity / 2);
+$zero_track_color: gtkalpha(currentColor, 0);
+$row_track_color: gtkalpha(currentColor, 0.05);
+$borders_color: if($variant == 'light', scale-alpha(#000000, 0.1), scale-alpha(#000000, 0.18));
+$solid_borders_color: $palenight_foreground;
+$darker_borders_color: $palenight_foreground;
+
+$highlight_color: if($variant == 'light', scale-alpha(#FFFFFF, 0.4), scale-alpha(#FFFFFF, 0.3));
+
+$secondary_highlight_color: scale-alpha(#FFFFFF, 0.1);
+
+$placeholder_text_color: mix($fg_color, $base_color, percentage($hint_opacity));
+
+$warning_color:       $palenight_orange;
+$error_color:         $palenight_red;
+$success_color:       $palenight_green;
+
+$suggested_color:     $palenight_green;
+$destructive_color:   $palenight_red;
+
+$info_bg_color:       $palenight_green;
+$question_bg_color:   $palenight_blue;
+$warning_bg_color:    $palenight_orange;
+$error_bg_color:      $palenight_red;
+
+$link_color:          $primary_color;
+$link_visited_color:  $palenight_accent;
