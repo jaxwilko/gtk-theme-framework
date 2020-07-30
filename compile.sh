@@ -19,7 +19,7 @@ if [ ! "$OPTIPNG" ]; then
    exit 1
 fi
 
-help_message() {
+usage() {
     cat << NOTICE
     OPTIONS
     -h      show this message
@@ -83,10 +83,7 @@ FORCE=""
 
 while getopts hvf opts; do
     case ${opts} in
-        h)
-            help_message
-            exit 0
-            ;;
+        h) usage && exit 0 ;;
         v) VERBOSE=1 ;;
         f) FORCE=1 ;;
         *);;
