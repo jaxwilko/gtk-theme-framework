@@ -1,30 +1,23 @@
 #! /bin/bash
 
-INKSCAPE="/usr/bin/inkscape"
-OPTIPNG="/usr/bin/optipng"
+INKSCAPE=$(command -v inkscape)
+OPTIPNG=$(command -v optipng)
 
 INDEX="assets.txt"
+ASSETS_DIR="material/assets"
+SRC_FILE="material/assets.svg"
 
-for variant in '' '-dark'; do
-    color='-palenight'
+mkdir -p $ASSETS_DIR
 
-    ASSETS_DIR="vimix${color}/assets${variant}"
-    SRC_FILE="vimix${color}/assets${variant}.svg"
-
-    install -d $ASSETS_DIR
-
-    for i in $(cat $INDEX); do
-        if [ -f $ASSETS_DIR/$i.png ]; then
-            echo $ASSETS_DIR/$i.png exists.
-        else
-            echo
-            echo Rendering $ASSETS_DIR/$i.png
-            $INKSCAPE --export-id=$i \
-                --export-id-only \
-                --export-png=$ASSETS_DIR/$i.png $SRC_FILE >/dev/null &&
-                $OPTIPNG -o7 --quiet $ASSETS_DIR/$i.png
-        fi
-    done
-done
+while IFS= read -r $i
+do
+  if [ ! -f $ASSETS_DIR/$i.png ]; then
+        echo Rendering $ASSETS_DIR/$i.png
+        $INKSCAPE --export-id=$i \
+            --export-id-only \
+            --export-png=$ASSETS_DIR/$i.png $SRC_FILE >/dev/null &&
+            $OPTIPNG -o7 --quiet $ASSETS_DIR/$i.png
+    fi
+done < "$INDEX"
 
 exit 0

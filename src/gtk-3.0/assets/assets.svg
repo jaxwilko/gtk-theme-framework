@@ -68,7 +68,7 @@
     <linearGradient
        id="color-secondary">
       <stop
-         stop-color="#666666"
+         stop-color="#C792EA"
          id="stop15" />
     </linearGradient>
     <linearGradient
@@ -80,7 +80,7 @@
     <linearGradient
        id="color-bg-dark">
       <stop
-         stop-color="#282828"
+         stop-color="#292d3e"
          id="stop21" />
     </linearGradient>
     <linearGradient
@@ -102,7 +102,7 @@
        y2="0"
        gradientUnits="userSpaceOnUse">
       <stop
-         stop-color="#424242"
+         stop-color="#32364c"
          id="stop27" />
     </linearGradient>
     <rect
