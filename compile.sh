@@ -24,6 +24,7 @@ help_message() {
     OPTIONS
     -h      show this message
     -v      print verbose info
+    -f      force asset recompilation
 NOTICE
 }
 
@@ -78,17 +79,27 @@ make_assets_x2() {
 }
 
 VERBOSE=""
+FORCE=""
 
-while getopts hv opts; do
+while getopts hvf opts; do
     case ${opts} in
         h)
             help_message
             exit 0
             ;;
         v) VERBOSE=1 ;;
+        f) FORCE=1 ;;
         *);;
     esac
 done
+
+
+if [ "$FORCE" ]; then
+    rm -rf "src/gtk-3.0/assets/assets" \
+        "src/gtk-2.0/assets/material/assets" \
+        "src/gtk-3.0/assets/window-assets" \
+        "src/gtk-3.0/assets/window-assets-contrast"
+fi
 
 echo "==> Generating the gtk.css..."
 make_css "src/gtk-3.0/gtk"
