@@ -20,7 +20,17 @@ Open the terminal at current directory.
 
 Run
 
-    ./install.sh --all
+    ./install.sh
+
+## Hacking
+
+To recompile css / png assets run:
+
+    ./compile.sh
+ 
+#### Command arguments
+
+Both `compile.sh` and `install.sh` support `-h` for help and `-v` to print verbose process info
 
 ## Icon 
 Vimix icon theme is based on Paper-Icon-Theme: https://github.com/snwh/paper-icon-theme
