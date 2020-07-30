@@ -12,10 +12,11 @@ fi
 REO_DIR=$(cd $(dirname $0) && pwd)
 SRC_DIR=${REO_DIR}/src
 
-THEME_NAME=vimix
-COLOR_VARIANTS=('' '-light' '-dark')
-SIZE_VARIANTS=('' '-laptop')
-THEME_VARIANTS=('-palenight')
+source ./theme-variables.sh
+
+COLOR_VARIANTS=('')
+SIZE_VARIANTS=('')
+THEME_VARIANTS=('')
 
 usage() {
     printf "%s\n" "Usage: $0 [OPTIONS...]"
@@ -73,11 +74,11 @@ install() {
     #  Install gtk2 theme
     mkdir -p                                                                              ${THEME_DIR}/gtk-2.0
     cp -r ${SRC_DIR}/gtk-2.0/common/*.rc                                                  ${THEME_DIR}/gtk-2.0
-    cp -r ${SRC_DIR}/gtk-2.0/assets/vimix${theme}/assets${ELSE_DARK}                      ${THEME_DIR}/gtk-2.0/assets
+    cp -r ${SRC_DIR}/gtk-2.0/assets/material${theme}/assets${ELSE_DARK}                      ${THEME_DIR}/gtk-2.0/assets
 
     [[ ${color} == '' ]] && [[ ${theme} == '' ]] && \
-    cp -r ${SRC_DIR}/gtk-2.0/assets/vimix/assets-dark/pathbar_button_active.png           ${THEME_DIR}/gtk-2.0/assets && \
-    cp -r ${SRC_DIR}/gtk-2.0/assets/vimix/assets-dark/pathbar_button_prelight.png         ${THEME_DIR}/gtk-2.0/assets
+    cp -r ${SRC_DIR}/gtk-2.0/assets/material/assets/pathbar_button_active.png           ${THEME_DIR}/gtk-2.0/assets && \
+    cp -r ${SRC_DIR}/gtk-2.0/assets/material/assets/pathbar_button_prelight.png         ${THEME_DIR}/gtk-2.0/assets
 
     cp -r ${SRC_DIR}/gtk-2.0/gtkrc${color}${theme}                                        ${THEME_DIR}/gtk-2.0/gtkrc
 
@@ -95,10 +96,10 @@ install() {
     cp -r ${SRC_DIR}/gtk-3.0/assets/scalable ${THEME_DIR}/gtk-3.0/assets
     cp -r ${SRC_DIR}/gtk-3.0/gtk${color}${size}${theme}.css ${THEME_DIR}/gtk-3.0/gtk.css
 
-    [[ ${color} != '-dark' ]] &&
-        cp -r ${SRC_DIR}/gtk-3.0/gtk-dark${size}${theme}.css ${THEME_DIR}/gtk-3.0/gtk-dark.css
+#    [[ ${color} != '-dark' ]] &&
+#        cp -r ${SRC_DIR}/gtk-3.0/gtk-dark${size}${theme}.css ${THEME_DIR}/gtk-3.0/gtk-dark.css
 
-    cp -r ${SRC_DIR}/gtk-3.0/assets/thumbnails/thumbnail${color}${theme}.png ${THEME_DIR}/gtk-3.0/thumbnail.png
+#    cp -r ${SRC_DIR}/gtk-3.0/assets/thumbnails/thumbnail${color}${theme}.png ${THEME_DIR}/gtk-3.0/thumbnail.png
 
     #  Install gnome-shell theme
     mkdir -p ${THEME_DIR}/gnome-shell
@@ -215,10 +216,6 @@ while [ $# -gt 0 ]; do
         shift
         for theme in "${@}"; do
             case "${theme}" in
-            palenight)
-                themes+=("${THEME_VARIANTS[5]}")
-                shift 1
-                ;;
             -* | --*)
                 break
                 ;;
