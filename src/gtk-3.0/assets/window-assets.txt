@@ -1,4 +1,3 @@
-
 titlebutton-close
 titlebutton-close-backdrop
 titlebutton-close-hover
@@ -15,7 +14,6 @@ titlebutton-restore
 titlebutton-restore-backdrop
 titlebutton-restore-hover
 titlebutton-restore-active
-
 titlebutton-close-dark
 titlebutton-close-backdrop-dark
 titlebutton-close-hover-dark
