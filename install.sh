@@ -123,18 +123,18 @@ ln -s assets/no-notifications.svg                               no-notifications
 
 if [ "$INSTALL_ICONS" ]; then
     say "Installing icons"
-    if [[ ! -d "${ICON_DEST_DIR}/Vimix" ]]; then
+    if [[ ! -d "${ICON_DEST_DIR}/Palenight" ]]; then
 
         if [[ ! -d "${SRC_DIR}/icons/vimix-icon-theme" ]]; then
             echo -e "\033[1;31mInstalling vimix-icons-theme, please show vinceliuice love and support!\033[0m"
             git clone git@github.com:vinceliuice/vimix-icon-theme.git "${SRC_DIR}/icons/vimix-icon-theme"
         fi
 
-        sh -c "${SRC_DIR}/icons/vimix-icon-theme/install.sh > /dev/null"
+        sh -c "${SRC_DIR}/icons/vimix-icon-theme/install.sh -n Palenight > /dev/null"
     fi
 
-    cp "${SRC_DIR}"/icons/dist/*                                "${ICON_DEST_DIR}/Vimix-dark/scalable/places"
-    cp "${SRC_DIR}"/icons/dist/*                                "${ICON_DEST_DIR}/Vimix/scalable/places"
+    cp "${SRC_DIR}"/icons/dist/*                                "${ICON_DEST_DIR}/Palenight-dark/scalable/places"
+    cp "${SRC_DIR}"/icons/dist/*                                "${ICON_DEST_DIR}/Palenight/scalable/places"
 fi
 
 
@@ -146,5 +146,5 @@ if [ "$SET_THEME_ACTIVE" ]; then
     gsettings set org.gnome.shell.extensions.user-theme name "$THEME_NAME"
     say "Setting icons active"
     gsettings reset org.gnome.desktop.interface icon-theme
-    gsettings set org.gnome.desktop.interface icon-theme "Vimix"
+    gsettings set org.gnome.desktop.interface icon-theme "Palenight-dark"
 fi
