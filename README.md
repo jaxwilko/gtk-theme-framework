@@ -30,7 +30,15 @@ To recompile css / png assets run:
  
 #### Command arguments
 
-Both `compile.sh` and `install.sh` support `-h` for help and `-v` to print verbose process info
+Both `compile.sh` and `install.sh` support `-h` for help and `-v` to print verbose process info.
+
+## Custom colours
+
+To override theme variables, run the following:
+
+    cp theme-variables.sh theme-variables-custom.sh
+    
+This file is ignored so it won't cause issues with updates and it will override any existing vars.
 
 ## Icon 
 Vimix icon theme is based on Paper-Icon-Theme: https://github.com/snwh/paper-icon-theme

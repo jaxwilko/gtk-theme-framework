@@ -95,6 +95,11 @@ done
 
 source ./theme-variables.sh
 
+if [[ -f ./theme-variables-custom.sh ]]; then
+    echo "==> Loading custom variables..."
+    source ./theme-variables-custom.sh
+fi
+
 echo "==> Generating global color scheme..."
 cat > src/global/theme-colors.scss << SCSS
 \$palenight_background:  $PALENIGHT_BACKGROUND;
