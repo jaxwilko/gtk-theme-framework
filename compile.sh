@@ -25,6 +25,7 @@ usage() {
     -h      show this message
     -v      print verbose info
     -f      force asset recompilation
+    -i      automatically install theme on completion
 NOTICE
 }
 
@@ -80,12 +81,14 @@ make_assets_x2() {
 
 VERBOSE=""
 FORCE=""
+INSTALL=""
 
-while getopts hvf opts; do
+while getopts hvfi opts; do
     case ${opts} in
         h) usage && exit 0 ;;
         v) VERBOSE=1 ;;
         f) FORCE=1 ;;
+        i) INSTALL=1 ;;
         *);;
     esac
 done
@@ -118,3 +121,8 @@ make_assets_x2 "src/gtk-3.0/assets/window-assets.txt" "src/gtk-3.0/assets/window
 echo "==> Generating gtk-3.0 contrast window assets..."
 make_assets "src/gtk-3.0/assets/window-assets.txt" "src/gtk-3.0/assets/window-assets-contrast"
 make_assets_x2 "src/gtk-3.0/assets/window-assets.txt" "src/gtk-3.0/assets/window-assets-contrast"
+
+if [ "$INSTALL" ]; then
+     [[ "$VERBOSE" ]] && FLAG="-v" || FLAG=""
+    sh -c "./install.sh $FLAG"
+fi
