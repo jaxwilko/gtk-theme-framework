@@ -4967,9 +4967,9 @@ filechooser placessidebar.sidebar row.sidebar-row,
 filechooser placessidebar.sidebar row.sidebar-row:hover,
 .nautilus-window placessidebar.sidebar row.sidebar-row:hover {
   transition: none;
-  color: #3B3F5A;
+  color: #82AAFF;
   background-color: transparent;
-  box-shadow: inset 3px 0 #3B3F5A;
+  box-shadow: inset 3px 0 #82AAFF;
 }
 
 filechooser placessidebar.sidebar row.sidebar-row:active,

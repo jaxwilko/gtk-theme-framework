@@ -1,8 +1,6 @@
 // When color definition differs for dark and light variant,
 // it gets @if ed depending on $variant
 
-@import '../../global/theme-colors';
-
 $higher_opacity: 0.87;
 $middle_opacity: 0.54;
 $lower_opacity: 0.24;
@@ -29,6 +27,7 @@ $darkest_contrast_color: #000000;
 
 $fg_color: $darker_contrast_color;
 $secondary_fg_color: scale-alpha($fg_color, $enabled_opacity);
+// used for scrollbars
 $tertiary_fg_color: scale-alpha($fg_color, $hint_opacity);
 
 $inversed_fg_color: $dark_contrast_color;
@@ -68,7 +67,7 @@ $accent_color: $palenight_green;
 $theme_color: $palenight_purple;
 $alt_theme_color: $palenight_green;
 
-$inverse_theme_color: #3B3F5A;
+$inverse_theme_color: $palenight_blue;
 $alt_inverse_theme_color: $palenight_comment;
 
 $topbar_theme_color: $theme_color;

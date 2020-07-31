@@ -1,8 +1,6 @@
-$variant: 'dark';
-$laptop: 'false';
 $color: 'palenight';
-$headerbar: 'dark';
 
+@import '../global/theme-variables';
 @import 'sass/colors';
 @import 'sass/drawing';
 @import 'sass/common';
