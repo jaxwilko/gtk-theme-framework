@@ -1,18 +1,7 @@
 // When color definition differs for dark and light variant,
 // it gets @if ed depending on $variant
 
-$palenight_background:  #292D3E;
-$palenight_foreground:  #32364C;
-$palenight_divider:     #4D5478;
-$palenight_comment:     #676E95;
-$palenight_accent:      #AB47BC;
-$palenight_red:         #FF5370;
-$palenight_orange:      #F78C6C;
-$palenight_yellow:      #FFCB6B;
-$palenight_green:       #C3E88D;
-$palenight_blue:        #82AAFF;
-$palenight_purple:      #C792EA;
-$palenight_text:        #EAEAEA;
+@import '../../global/theme-colors';
 
 $higher_opacity: 0.87;
 $middle_opacity: 0.54;

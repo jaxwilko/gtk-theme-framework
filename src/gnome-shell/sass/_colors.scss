@@ -2,6 +2,7 @@
 // it gets @if ed depending on $variant
 
 @import 'color-palette';
+@import '../../global/theme-colors';
 
 @function fade($c) {
     @return mix($c, $palenight_background, 50%);

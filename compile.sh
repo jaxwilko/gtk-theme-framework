@@ -93,6 +93,23 @@ while getopts hvfi opts; do
     esac
 done
 
+source ./theme-variables.sh
+
+echo "==> Generating global color scheme..."
+cat > src/global/theme-colors.scss << SCSS
+\$palenight_background:  $PALENIGHT_BACKGROUND;
+\$palenight_foreground:  $PALENIGHT_FOREGROUND;
+\$palenight_divider:     $PALENIGHT_DIVIDER;
+\$palenight_comment:     $PALENIGHT_COMMENT;
+\$palenight_accent:      $PALENIGHT_ACCENT;
+\$palenight_red:         $PALENIGHT_RED;
+\$palenight_orange:      $PALENIGHT_ORANGE;
+\$palenight_yellow:      $PALENIGHT_YELLOW;
+\$palenight_green:       $PALENIGHT_GREEN;
+\$palenight_blue:        $PALENIGHT_BLUE;
+\$palenight_purple:      $PALENIGHT_PURPLE;
+\$palenight_text:        $PALENIGHT_TEXT;
+SCSS
 
 if [ "$FORCE" ]; then
     rm -rf "src/gtk-3.0/assets/assets" \
