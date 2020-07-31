@@ -7,6 +7,7 @@ usage() {
     -v                  print verbose info
     -d /path/to/dir     force themes directory
     -s                  automatically set the theme active after install
+    -o                  install icons
 NOTICE
 }
 
@@ -22,20 +23,23 @@ ROOT_UID=0
 # Destination directory
 if [ "$UID" -eq "$ROOT_UID" ]; then
     DEST_DIR="/usr/share/themes"
+    ICON_DEST_DIR="/usr/share/icons"
 else
     DEST_DIR="${HOME}/.themes"
+    ICON_DEST_DIR="${HOME}/.local/share/icons"
 fi
 
 VERBOSE=""
 CONTRAST_MODE=""
 
-while getopts hvscd: opts; do
+while getopts hvsocd: opts; do
     case ${opts} in
         h) usage && exit 0 ;;
         v) VERBOSE=1 ;;
         d) DEST_DIR=${OPTARG} ;;
         c) CONTRAST_MODE=1 ;;
         s) SET_THEME_ACTIVE=1 ;;
+        o) INSTALL_ICONS=1 ;;
         *);;
     esac
 done
@@ -117,10 +121,30 @@ ln -s assets/no-events.svg                                      no-events.svg
 ln -s assets/process-working.svg                                process-working.svg
 ln -s assets/no-notifications.svg                               no-notifications.svg
 
+if [ "$INSTALL_ICONS" ]; then
+    say "Installing icons"
+    if [[ ! -d "${ICON_DEST_DIR}/Vimix" ]]; then
+
+        if [[ ! -d "${SRC_DIR}/icons/vimix-icon-theme" ]]; then
+            echo -e "\033[1;31mInstalling vimix-icons-theme, please show vinceliuice love and support!\033[0m"
+            git clone git@github.com:vinceliuice/vimix-icon-theme.git "${SRC_DIR}/icons/vimix-icon-theme"
+        fi
+
+        sh -c "${SRC_DIR}/icons/vimix-icon-theme/install.sh > /dev/null"
+    fi
+
+    cp "${SRC_DIR}"/icons/dist/*                                "${ICON_DEST_DIR}/Vimix-dark/scalable/places"
+    cp "${SRC_DIR}"/icons/dist/*                                "${ICON_DEST_DIR}/Vimix/scalable/places"
+fi
+
+
 if [ "$SET_THEME_ACTIVE" ]; then
     say "Setting theme active"
     gsettings reset org.gnome.desktop.interface gtk-theme
     gsettings set org.gnome.desktop.interface gtk-theme "$THEME_NAME"
     gsettings set org.gnome.shell.extensions.user-theme name "Adwaita"
     gsettings set org.gnome.shell.extensions.user-theme name "$THEME_NAME"
+    say "Setting icons active"
+    gsettings reset org.gnome.desktop.interface icon-theme
+    gsettings set org.gnome.desktop.interface icon-theme "Vimix"
 fi

@@ -25,8 +25,9 @@ usage() {
     -h      show this message
     -v      print verbose info
     -f      force asset recompilation
-    -i      automatically install theme on completion
-    -is     automatically set the theme active after install
+    -i      automatically install theme after completion
+    -is     automatically set the theme/icons active after install
+    -o      automatically icons theme after completion
 NOTICE
 }
 
@@ -110,18 +111,26 @@ make_placeholder_replacement() {
     done
 }
 
+make_icons() {
+    local MAKE_COLOUR="$1"
+    cp src/icons/default/* src/icons/dist
+    find ./src/icons/dist -type f -name "*.svg" -exec sed -i "s/DEFAULT_COLOUR/${MAKE_COLOUR}/g" {} +
+}
+
 VERBOSE=""
 FORCE=""
 INSTALL=""
+INSTALL_ICONS=""
 SET_THEME_ACTIVE=""
 
-while getopts hvfis opts; do
+while getopts hvfios opts; do
     case ${opts} in
         h) usage && exit 0 ;;
         v) VERBOSE=1 ;;
         f) FORCE=1 ;;
         i) INSTALL=1 ;;
         s) SET_THEME_ACTIVE=1 ;;
+        o) INSTALL_ICONS=1 ;;
         *);;
     esac
 done
@@ -187,8 +196,12 @@ say "Generating gtk-3.0 contrast window assets"
 make_assets "src/gtk-3.0/assets/window-assets.txt" "src/gtk-3.0/assets/window-assets-contrast"
 make_assets_x2 "src/gtk-3.0/assets/window-assets.txt" "src/gtk-3.0/assets/window-assets-contrast"
 
+say "Generating colour icons"
+make_icons "${PALENIGHT_GREEN}"
+
 if [ "$INSTALL" ]; then
      [[ "$VERBOSE" ]] && FLAG="-v" || FLAG=""
      [[ "$SET_THEME_ACTIVE" ]] && FLAG="$FLAG -s"
+     [[ "$INSTALL_ICONS" ]] && FLAG="$FLAG -o"
     sh -c "./install.sh $FLAG"
 fi
