@@ -26,6 +26,7 @@ usage() {
     -v      print verbose info
     -f      force asset recompilation
     -i      automatically install theme on completion
+    -is     automatically set the theme active after install
 NOTICE
 }
 
@@ -83,16 +84,44 @@ make_assets_x2() {
     done < "$INDEX"
 }
 
+make_placeholder_replacement() {
+    local SRC_FILE="$1"
+    local OUT_FILE="$2"
+    local PLACEHOLDERS=(
+        "PALENIGHT_BACKGROUND"
+        "PALENIGHT_FOREGROUND"
+        "PALENIGHT_DIVIDER"
+        "PALENIGHT_COMMENT"
+        "PALENIGHT_ACCENT"
+        "PALENIGHT_RED"
+        "PALENIGHT_ORANGE"
+        "PALENIGHT_YELLOW"
+        "PALENIGHT_GREEN"
+        "PALENIGHT_BLUE"
+        "PALENIGHT_PURPLE"
+        "PALENIGHT_TEXT"
+    )
+
+    cp "$SRC_FILE" "$OUT_FILE"
+
+    for PLACEHOLDER in "${PLACEHOLDERS[@]}"
+    do
+        sed -i "s/${PLACEHOLDER}/${!PLACEHOLDER}/g" "$OUT_FILE"
+    done
+}
+
 VERBOSE=""
 FORCE=""
 INSTALL=""
+SET_THEME_ACTIVE=""
 
-while getopts hvfi opts; do
+while getopts hvfis opts; do
     case ${opts} in
         h) usage && exit 0 ;;
         v) VERBOSE=1 ;;
         f) FORCE=1 ;;
         i) INSTALL=1 ;;
+        s) SET_THEME_ACTIVE=1 ;;
         *);;
     esac
 done
@@ -133,14 +162,20 @@ make_css "src/gtk-3.0/gtk"
 say "Generating the gnome-shell.css"
 make_css "src/gnome-shell/gnome-shell"
 
+say "Generating gtk-2.0 gtkrc"
+make_placeholder_replacement "src/gtk-2.0/gtkrc-template" "src/gtk-2.0/gtkrc"
+
 say "Generating gtk-2.0 assets"
+make_placeholder_replacement "src/gtk-2.0/assets/material/assets-template.svg" "src/gtk-2.0/assets/material/assets.svg"
 make_assets "src/gtk-2.0/assets/assets.txt" "src/gtk-2.0/assets/material/assets"
 
 say "Generating gtk-3.0 assets"
+make_placeholder_replacement "src/gtk-3.0/assets/assets-template.svg" "src/gtk-3.0/assets/assets.svg"
 make_assets "src/gtk-3.0/assets/assets.txt" "src/gtk-3.0/assets/assets"
 make_assets_x2 "src/gtk-3.0/assets/assets.txt" "src/gtk-3.0/assets/assets"
 
 say "Generating gtk-3.0 window assets"
+make_placeholder_replacement "src/gtk-3.0/assets/window-assets-template.svg" "src/gtk-3.0/assets/window-assets.svg"
 make_assets "src/gtk-3.0/assets/window-assets.txt" "src/gtk-3.0/assets/window-assets"
 make_assets_x2 "src/gtk-3.0/assets/window-assets.txt" "src/gtk-3.0/assets/window-assets"
 
@@ -151,4 +186,10 @@ make_assets_x2 "src/gtk-3.0/assets/window-assets.txt" "src/gtk-3.0/assets/window
 if [ "$INSTALL" ]; then
      [[ "$VERBOSE" ]] && FLAG="-v" || FLAG=""
     sh -c "./install.sh $FLAG"
+    if [ "$SET_THEME_ACTIVE" ]; then
+        gsettings set org.gnome.desktop.interface gtk-theme "Adwaita"
+        gsettings set org.gnome.desktop.interface gtk-theme "$THEME_NAME"
+        gsettings set org.gnome.shell.extensions.user-theme name "Adwaita"
+        gsettings set org.gnome.shell.extensions.user-theme name "$THEME_NAME"
+    fi
 fi
