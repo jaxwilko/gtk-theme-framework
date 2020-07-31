@@ -10,7 +10,7 @@ NOTICE
 }
 
 say() {
-    [ "$VERBOSE" ] && echo "$1"
+    [ "$VERBOSE" ] && echo "==> $1"
 }
 
 REO_DIR=$(cd $(dirname $0) && pwd)
@@ -42,18 +42,18 @@ source ./theme-variables.sh
 
 THEME_DIR="${DEST_DIR}/${THEME_NAME}"
 
-say "Installing to '${THEME_DIR}'..."
+say "Installing to '${THEME_DIR}'"
 
-say "Removing theme if exists..."
+say "Removing theme if exists"
 
 [[ -d ${THEME_DIR} ]] && rm -rf "$THEME_DIR"
 
-say "Copying licence..."
+say "Copying licence"
 
 mkdir -p ${THEME_DIR}
 cp -r ${REO_DIR}/LICENSE ${THEME_DIR}
 
-say "Generating index.theme file..."
+say "Generating index.theme file"
 
 cat > "${THEME_DIR}/index.theme" <<EOT
 [Desktop Entry]
@@ -70,7 +70,7 @@ CursorTheme=Adwaita
 ButtonLayout=menu:minimize,maximize,close
 EOT
 
-say "Install gtk2 theme..."
+say "Install gtk2 theme"
 
 mkdir -p                                                        "${THEME_DIR}/gtk-2.0"
 cp -r "${SRC_DIR}"/gtk-2.0/common/*.rc                          "${THEME_DIR}/gtk-2.0"
@@ -79,7 +79,7 @@ cp -r "${SRC_DIR}/gtk-2.0/assets/material/assets"               "${THEME_DIR}/gt
 cp -r "${SRC_DIR}/gtk-2.0/gtkrc"                                "${THEME_DIR}/gtk-2.0/gtkrc"
 
 
-say "Install gtk3 theme..."
+say "Install gtk3 theme"
 mkdir -p                                                        "${THEME_DIR}/gtk-3.0/assets"
 cp -r "${SRC_DIR}"/gtk-3.0/assets/assets/*.png                  "${THEME_DIR}/gtk-3.0/assets"
 

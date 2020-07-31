@@ -29,6 +29,10 @@ usage() {
 NOTICE
 }
 
+say() {
+    [ "$VERBOSE" ] && echo "==> $1"
+}
+
 make_css() {
     local SRC_FILE="$1"
     sh -c "$SASSC -M -t expanded ${SRC_FILE}.scss ${SRC_FILE}.css"
@@ -48,7 +52,7 @@ make_assets() {
     while IFS= read -r ASSET
     do
         if [ ! -f "${ASSETS_DIR}/${ASSET}.png" ]; then
-            [ "$VERBOSE" ] && echo "Rendering ${ASSETS_DIR}/${ASSET}.png"
+            say "Rendering ${ASSETS_DIR}/${ASSET}.png"
             $INKSCAPE --export-id="$ASSET" \
                 --export-id-only \
                 --export-png="${ASSETS_DIR}/${ASSET}.png" "$SRC_FILE" > /dev/null
@@ -68,7 +72,7 @@ make_assets_x2() {
     while IFS= read -r ASSET
     do
         if [ ! -f "${ASSETS_DIR}/${ASSET}@2.png" ]; then
-            [ "$VERBOSE" ] && echo "Rendering ${ASSETS_DIR}/${ASSET}@2.png"
+            say "Rendering ${ASSETS_DIR}/${ASSET}@2.png"
             $INKSCAPE --export-id="$ASSET" \
               --export-dpi=180 \
               --export-id-only \
@@ -96,11 +100,11 @@ done
 source ./theme-variables.sh
 
 if [[ -f ./theme-variables-custom.sh ]]; then
-    echo "==> Loading custom variables..."
+    say "Loading custom variables"
     source ./theme-variables-custom.sh
 fi
 
-echo "==> Generating global color scheme..."
+say "Generating global color scheme"
 cat > src/global/theme-colors.scss << SCSS
 \$palenight_background:  $PALENIGHT_BACKGROUND;
 \$palenight_foreground:  $PALENIGHT_FOREGROUND;
@@ -123,24 +127,24 @@ if [ "$FORCE" ]; then
         "src/gtk-3.0/assets/window-assets-contrast"
 fi
 
-echo "==> Generating the gtk.css..."
+say "Generating the gtk.css"
 make_css "src/gtk-3.0/gtk"
 
-echo "==> Generating the gnome-shell.css..."
+say "Generating the gnome-shell.css"
 make_css "src/gnome-shell/gnome-shell"
 
-echo "==> Generating gtk-2.0 assets..."
+say "Generating gtk-2.0 assets"
 make_assets "src/gtk-2.0/assets/assets.txt" "src/gtk-2.0/assets/material/assets"
 
-echo "==> Generating gtk-3.0 assets..."
+say "Generating gtk-3.0 assets"
 make_assets "src/gtk-3.0/assets/assets.txt" "src/gtk-3.0/assets/assets"
 make_assets_x2 "src/gtk-3.0/assets/assets.txt" "src/gtk-3.0/assets/assets"
 
-echo "==> Generating gtk-3.0 window assets..."
+say "Generating gtk-3.0 window assets"
 make_assets "src/gtk-3.0/assets/window-assets.txt" "src/gtk-3.0/assets/window-assets"
 make_assets_x2 "src/gtk-3.0/assets/window-assets.txt" "src/gtk-3.0/assets/window-assets"
 
-echo "==> Generating gtk-3.0 contrast window assets..."
+say "Generating gtk-3.0 contrast window assets"
 make_assets "src/gtk-3.0/assets/window-assets.txt" "src/gtk-3.0/assets/window-assets-contrast"
 make_assets_x2 "src/gtk-3.0/assets/window-assets.txt" "src/gtk-3.0/assets/window-assets-contrast"
 
