@@ -134,7 +134,11 @@ if [[ -f ./theme-variables-custom.sh ]]; then
 fi
 
 say "Generating global color scheme"
-cat > src/global/theme-colors.scss << SCSS
+cat > src/global/theme-variables.scss << SCSS
+\$variant:               '$THEME_VARIANT';
+\$laptop:                '$THEME_LAPTOP_MODE';
+\$headerbar:             '$THEME_HEADER_BAR';
+\$panel:                 '$THEME_PANEL';
 \$palenight_background:  $PALENIGHT_BACKGROUND;
 \$palenight_foreground:  $PALENIGHT_FOREGROUND;
 \$palenight_divider:     $PALENIGHT_DIVIDER;
