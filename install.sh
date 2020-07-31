@@ -6,6 +6,7 @@ usage() {
     -h                  show this message
     -v                  print verbose info
     -d /path/to/dir     force themes directory
+    -s                  automatically set the theme active after install
 NOTICE
 }
 
@@ -28,12 +29,13 @@ fi
 VERBOSE=""
 CONTRAST_MODE=""
 
-while getopts hvcd: opts; do
+while getopts hvscd: opts; do
     case ${opts} in
         h) usage && exit 0 ;;
         v) VERBOSE=1 ;;
         d) DEST_DIR=${OPTARG} ;;
         c) CONTRAST_MODE=1 ;;
+        s) SET_THEME_ACTIVE=1 ;;
         *);;
     esac
 done
@@ -114,3 +116,11 @@ cd "${THEME_DIR}/gnome-shell" || exit 1
 ln -s assets/no-events.svg                                      no-events.svg
 ln -s assets/process-working.svg                                process-working.svg
 ln -s assets/no-notifications.svg                               no-notifications.svg
+
+if [ "$SET_THEME_ACTIVE" ]; then
+    say "Setting theme active"
+    gsettings reset org.gnome.desktop.interface gtk-theme
+    gsettings set org.gnome.desktop.interface gtk-theme "$THEME_NAME"
+    gsettings set org.gnome.shell.extensions.user-theme name "Adwaita"
+    gsettings set org.gnome.shell.extensions.user-theme name "$THEME_NAME"
+fi

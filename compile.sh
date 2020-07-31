@@ -189,11 +189,6 @@ make_assets_x2 "src/gtk-3.0/assets/window-assets.txt" "src/gtk-3.0/assets/window
 
 if [ "$INSTALL" ]; then
      [[ "$VERBOSE" ]] && FLAG="-v" || FLAG=""
+     [[ "$SET_THEME_ACTIVE" ]] && FLAG="$FLAG -s"
     sh -c "./install.sh $FLAG"
-    if [ "$SET_THEME_ACTIVE" ]; then
-        gsettings set org.gnome.desktop.interface gtk-theme "Adwaita"
-        gsettings set org.gnome.desktop.interface gtk-theme "$THEME_NAME"
-        gsettings set org.gnome.shell.extensions.user-theme name "Adwaita"
-        gsettings set org.gnome.shell.extensions.user-theme name "$THEME_NAME"
-    fi
 fi
