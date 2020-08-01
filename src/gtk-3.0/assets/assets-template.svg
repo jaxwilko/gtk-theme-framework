@@ -68,7 +68,7 @@
     <linearGradient
        id="color-secondary">
       <stop
-         stop-color="PALENIGHT_PURPLE"
+         stop-color="THEME_COLOUR_SUCCESS"
          id="stop15" />
     </linearGradient>
     <linearGradient

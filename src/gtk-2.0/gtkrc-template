@@ -1,16 +1,16 @@
 
 # Text/base
-gtk-color-scheme = "text_color:PALENIGHT_TEXT\nbase_color:PALENIGHT_BACKGROUND"
+gtk-color-scheme = "text_color:THEME_COLOUR_TEXT\nbase_color:THEME_COLOUR_BACKGROUND"
 # Foreground/background
-gtk-color-scheme = "fg_color:PALENIGHT_TEXT\nbg_color:PALENIGHT_BACKGROUND"
+gtk-color-scheme = "fg_color:THEME_COLOUR_TEXT\nbg_color:THEME_COLOUR_BACKGROUND"
 # Selected foreground/background
-gtk-color-scheme = "selected_fg_color:PALENIGHT_TEXT\nselected_bg_color:PALENIGHT_COMMENT"
+gtk-color-scheme = "selected_fg_color:THEME_COLOUR_TEXT\nselected_bg_color:THEME_COLOUR_COMMENT"
 # Titlebar foreground/background
-gtk-color-scheme = "titlebar_fg_color:PALENIGHT_TEXT\ntitlebar_bg_color:PALENIGHT_BACKGROUND"
+gtk-color-scheme = "titlebar_fg_color:THEME_COLOUR_TEXT\ntitlebar_bg_color:THEME_COLOUR_BACKGROUND"
 # Links
-gtk-color-scheme = "link_color:PALENIGHT_BLUE\nvisited_link_color:PALENIGHT_COMMENT"
+gtk-color-scheme = "link_color:THEME_COLOUR_INFO\nvisited_link_color:THEME_COLOUR_COMMENT"
 # Panel
-gtk-color-scheme = "topbar_bg_color:PALENIGHT_BACKGROUND\ntopbar_fg_color:PALENIGHT_TEXT"
+gtk-color-scheme = "topbar_bg_color:THEME_COLOUR_BACKGROUND\ntopbar_fg_color:THEME_COLOUR_TEXT"
 
 # Set GTK settings
 gtk-auto-mnemonics              = 1

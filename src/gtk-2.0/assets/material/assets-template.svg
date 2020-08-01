@@ -59,66 +59,66 @@
     <linearGradient
        id="color-fg-disabled">
       <stop
-         stop-color="PALENIGHT_COMMENT"
+         stop-color="THEME_COLOUR_COMMENT"
          stop-opacity="0.5"
          id="stop11" />
     </linearGradient>
     <linearGradient
        id="color-fg-secondary">
       <stop
-         stop-color="PALENIGHT_COMMENT"
+         stop-color="THEME_COLOUR_COMMENT"
          stop-opacity="0.7"
          id="stop14" />
     </linearGradient>
     <linearGradient
        id="color-fg-secondary-disabled">
       <stop
-         stop-color="PALENIGHT_COMMENT"
+         stop-color="THEME_COLOUR_COMMENT"
          stop-opacity="0.3"
          id="stop17" />
     </linearGradient>
     <linearGradient
        id="color-divider">
       <stop
-         stop-color="PALENIGHT_COMMENT"
+         stop-color="THEME_COLOUR_COMMENT"
          stop-opacity="0.12"
          id="stop20" />
     </linearGradient>
     <linearGradient
        id="color-primary">
       <stop
-         stop-color="PALENIGHT_COMMENT"
+         stop-color="THEME_COLOUR_COMMENT"
          id="stop23" />
     </linearGradient>
     <linearGradient
        id="color-accent">
       <stop
-         stop-color="PALENIGHT_GREEN"
+         stop-color="THEME_COLOUR_SUCCESS"
          id="stop26" />
     </linearGradient>
     <linearGradient
        id="color-accent-insensitive">
       <stop
-         stop-color="PALENIGHT_GREEN"
+         stop-color="THEME_COLOUR_SUCCESS"
          stop-opacity="0.5"
          id="stop29" />
     </linearGradient>
     <linearGradient
        id="color-bg">
       <stop
-         stop-color="PALENIGHT_BACKGROUND"
+         stop-color="THEME_COLOUR_BACKGROUND"
          id="stop32" />
     </linearGradient>
     <linearGradient
        id="color-bg-lighter">
       <stop
-         stop-color="PALENIGHT_FOREGROUND"
+         stop-color="THEME_COLOUR_FOREGROUND"
          id="stop35" />
     </linearGradient>
     <linearGradient
        id="color-base">
       <stop
-         stop-color="PALENIGHT_BACKGROUND"
+         stop-color="THEME_COLOUR_BACKGROUND"
          id="stop38" />
     </linearGradient>
     <linearGradient
@@ -2007,7 +2007,7 @@
      y="416"
      inkscape:label="#rect6297" />
   <rect
-     style="opacity:0.5;fill:PALENIGHT_ACCENT;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.81649661;stroke-opacity:1"
+     style="opacity:0.5;fill:THEME_COLOUR_ACCENT;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.81649661;stroke-opacity:1"
      id="pathbar_button_prelight"
      width="12"
      height="2"
@@ -2024,6 +2024,6 @@
      height="2"
      width="12"
      id="pathbar_button_active"
-     style="opacity:1;fill:PALENIGHT_ACCENT;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.81649661;stroke-opacity:1"
+     style="opacity:1;fill:THEME_COLOUR_ACCENT;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.81649661;stroke-opacity:1"
      inkscape:label="#rect5320" />
 </svg>

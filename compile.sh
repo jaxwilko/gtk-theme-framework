@@ -89,18 +89,18 @@ make_placeholder_replacement() {
     local SRC_FILE="$1"
     local OUT_FILE="$2"
     local PLACEHOLDERS=(
-        "PALENIGHT_BACKGROUND"
-        "PALENIGHT_FOREGROUND"
-        "PALENIGHT_DIVIDER"
-        "PALENIGHT_COMMENT"
-        "PALENIGHT_ACCENT"
-        "PALENIGHT_RED"
-        "PALENIGHT_ORANGE"
-        "PALENIGHT_YELLOW"
-        "PALENIGHT_GREEN"
-        "PALENIGHT_BLUE"
-        "PALENIGHT_PURPLE"
-        "PALENIGHT_TEXT"
+        "THEME_COLOUR_BACKGROUND"
+        "THEME_COLOUR_FOREGROUND"
+        "THEME_COLOUR_DIVIDER"
+        "THEME_COLOUR_COMMENT"
+        "THEME_COLOUR_ACCENT"
+        "THEME_COLOUR_DANGER"
+        "THEME_COLOUR_MID_DANGER"
+        "THEME_COLOUR_WARNING"
+        "THEME_COLOUR_SUCCESS"
+        "THEME_COLOUR_INFO"
+        "THEME_COLOUR_DARK_INFO"
+        "THEME_COLOUR_TEXT"
     )
 
     cp "$SRC_FILE" "$OUT_FILE"
@@ -148,18 +148,18 @@ cat > src/global/theme-variables.scss << SCSS
 \$laptop:                '$THEME_LAPTOP_MODE';
 \$headerbar:             '$THEME_HEADER_BAR';
 \$panel:                 '$THEME_PANEL';
-\$palenight_background:  $PALENIGHT_BACKGROUND;
-\$palenight_foreground:  $PALENIGHT_FOREGROUND;
-\$palenight_divider:     $PALENIGHT_DIVIDER;
-\$palenight_comment:     $PALENIGHT_COMMENT;
-\$palenight_accent:      $PALENIGHT_ACCENT;
-\$palenight_red:         $PALENIGHT_RED;
-\$palenight_orange:      $PALENIGHT_ORANGE;
-\$palenight_yellow:      $PALENIGHT_YELLOW;
-\$palenight_green:       $PALENIGHT_GREEN;
-\$palenight_blue:        $PALENIGHT_BLUE;
-\$palenight_purple:      $PALENIGHT_PURPLE;
-\$palenight_text:        $PALENIGHT_TEXT;
+\$palenight_background:  $THEME_COLOUR_BACKGROUND;
+\$palenight_foreground:  $THEME_COLOUR_FOREGROUND;
+\$palenight_divider:     $THEME_COLOUR_DIVIDER;
+\$palenight_comment:     $THEME_COLOUR_COMMENT;
+\$palenight_accent:      $THEME_COLOUR_ACCENT;
+\$palenight_red:         $THEME_COLOUR_DANGER;
+\$palenight_orange:      $THEME_COLOUR_MID_DANGER;
+\$palenight_yellow:      $THEME_COLOUR_WARNING;
+\$palenight_green:       $THEME_COLOUR_SUCCESS;
+\$palenight_blue:        $THEME_COLOUR_INFO;
+\$palenight_purple:      $THEME_COLOUR_DARK_INFO;
+\$palenight_text:        $THEME_COLOUR_TEXT;
 SCSS
 
 if [ "$FORCE" ]; then
@@ -197,7 +197,7 @@ make_assets "src/gtk-3.0/assets/window-assets.txt" "src/gtk-3.0/assets/window-as
 make_assets_x2 "src/gtk-3.0/assets/window-assets.txt" "src/gtk-3.0/assets/window-assets-contrast"
 
 say "Generating colour icons"
-make_icons "${PALENIGHT_GREEN}"
+make_icons "${THEME_COLOUR_SUCCESS}"
 
 if [ "$INSTALL" ]; then
      [[ "$VERBOSE" ]] && FLAG="-v" || FLAG=""
