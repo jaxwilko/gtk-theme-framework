@@ -69,22 +69,22 @@ say "Removing theme if exists"
 
 say "Copying files"
 
-cp -r "${DIST_DIR}/theme"                                       "$THEME_DIR"
+cp -r "${DIST_DIR}/theme" "$THEME_DIR"
 
 if [ "$INSTALL_ICONS" ]; then
     say "Installing icons"
-    if [[ ! -d "${ICON_DEST_DIR}/Palenight" ]]; then
+    if [[ ! -d "${ICON_DEST_DIR}/${THEME_NAME}" ]]; then
 
         if [[ ! -d "${SRC_DIR}/icons/vimix-icon-theme" ]]; then
             echo -e "\033[1;31mInstalling vimix-icons-theme, please show vinceliuice love and support!\033[0m"
             git clone git@github.com:vinceliuice/vimix-icon-theme.git "${SRC_DIR}/icons/vimix-icon-theme"
         fi
 
-        sh -c "${SRC_DIR}/icons/vimix-icon-theme/install.sh -n Palenight > /dev/null"
+        sh -c "${SRC_DIR}/icons/vimix-icon-theme/install.sh -n ${THEME_NAME} > /dev/null"
     fi
 
-    cp "${DIST_DIR}"/icons/*                               "${ICON_DEST_DIR}/Palenight-dark/scalable/places"
-    cp "${DIST_DIR}"/icons/*                               "${ICON_DEST_DIR}/Palenight/scalable/places"
+    cp "${DIST_DIR}"/icons/* "${ICON_DEST_DIR}/${THEME_NAME}-dark/scalable/places"
+    cp "${DIST_DIR}"/icons/* "${ICON_DEST_DIR}/${THEME_NAME}/scalable/places"
 fi
 
 
@@ -96,5 +96,5 @@ if [ "$SET_THEME_ACTIVE" ]; then
     gsettings set org.gnome.shell.extensions.user-theme name "$THEME_NAME"
     say "Setting icons active"
     gsettings reset org.gnome.desktop.interface icon-theme
-    gsettings set org.gnome.desktop.interface icon-theme "Palenight-dark"
+    gsettings set org.gnome.desktop.interface icon-theme "$THEME_NAME"
 fi
