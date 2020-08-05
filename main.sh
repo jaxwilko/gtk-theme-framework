@@ -7,7 +7,7 @@ usage() {
     -v      print verbose info
     -f      force asset recompilation
     -c      compile theme
-    -i      automatically install theme after completion
+    -i      install theme
     -is     automatically set the theme/icons active after install
     -o      automatically icons theme after completion
     -n      create a new theme template file
