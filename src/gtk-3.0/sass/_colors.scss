@@ -64,14 +64,15 @@ $primary_color: $theme_colour_comment;
 $alt_primary_color: $theme_colour_warning;
 $accent_color: $theme_colour_success;
 
-$theme_color: $theme_colour_dark_info;
+$theme_color: $theme_colour_accent_secondary;
 $alt_theme_color: $theme_colour_success;
 
 $inverse_theme_color: $theme_colour_info;
+// inputs and checkboxes
 $alt_inverse_theme_color: $theme_colour_comment;
 
 $topbar_theme_color: $theme_color;
-$alt_topbar_theme_color: #3B3F5A;
+$alt_topbar_theme_color: rgba($theme_colour_background, 0.3);
 
 
 $menu_bg_color: $theme_colour_background;
@@ -119,4 +120,4 @@ $warning_bg_color:    $theme_colour_mid_danger;
 $error_bg_color:      $theme_colour_danger;
 
 $link_color:          $primary_color;
-$link_visited_color:  $theme_colour_accent;
+$link_visited_color:  $theme_colour_accent_primary;
