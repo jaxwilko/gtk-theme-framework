@@ -8,8 +8,8 @@ usage() {
     -f      force asset recompilation
     -c      compile theme
     -i      install theme
+    -o      install icons
     -is     automatically set the theme/icons active after install
-    -o      automatically icons theme after completion
     -n      create a new theme template file
 NOTICE
 }
