@@ -20,13 +20,13 @@ $disabled_secondary_fg_color: rgba($theme_colour_text, 0.25);
 $track_color:                 rgba($theme_colour_text, 0.25);
 $divider_color:               $theme_colour_divider;
 
-$titlebar_fg_color:                    if($color == 'palenight', rgba($theme_colour_background, 0.87), if($panel == 'light', rgba($black, 0.87), $white));
-$titlebar_secondary_fg_color:          if($color == 'palenight', rgba($theme_colour_background, 0.54), if($panel == 'light', rgba($black, 0.54), rgba($white, 0.7)));
-$titlebar_hint_fg_color:               if($color == 'palenight', rgba($theme_colour_background, 0.38), if($panel == 'light', rgba($black, 0.38), rgba($white, 0.5)));
-$titlebar_disabled_fg_color:           if($color == 'palenight', rgba($theme_colour_background, 0.38), if($panel == 'light', rgba($black, 0.38), rgba($white, 0.5)));
-$titlebar_disabled_secondary_fg_color: if($color == 'palenight', rgba($theme_colour_background, 0.26), if($panel == 'light', rgba($black, 0.26), rgba($white, 0.3)));
-$titlebar_track_color:                 if($color == 'palenight', rgba($theme_colour_background, 0.26), if($panel == 'light', rgba($black, 0.26), rgba($white, 0.3)));
-$titlebar_divider_color:               if($color == 'palenight', rgba($theme_colour_background, 0.12), if($panel == 'light', rgba($black, 0.12), rgba($white, 0.12)));
+$titlebar_fg_color:                    if($panel == 'light', rgba($theme_colour_background, 0.87), $theme_colour_background);
+$titlebar_secondary_fg_color:          if($panel == 'light', rgba($theme_colour_background, 0.54), rgba($theme_colour_background, 0.7));
+$titlebar_hint_fg_color:               if($panel == 'light', rgba($theme_colour_background, 0.38), rgba($theme_colour_background, 0.5));
+$titlebar_disabled_fg_color:           if($panel == 'light', rgba($theme_colour_background, 0.38), rgba($theme_colour_background, 0.5));
+$titlebar_disabled_secondary_fg_color: if($panel == 'light', rgba($theme_colour_background, 0.26), rgba($theme_colour_background, 0.3));
+$titlebar_track_color:                 if($panel == 'light', rgba($theme_colour_background, 0.26), rgba($theme_colour_background, 0.3));
+$titlebar_divider_color:               if($panel == 'light', rgba($theme_colour_background, 0.12), rgba($theme_colour_background, 0.12));
 
 $inverse_fg_color:                    $white;
 $inverse_secondary_fg_color:          rgba($white, 0.7);
@@ -55,7 +55,7 @@ $primary_color: $theme_colour_comment;
 $alt_primary_color: $theme_colour_warning;
 $accent_color: $theme_colour_success;
 
-$theme_color: $theme_colour_dark_info;
+$theme_color: $theme_colour_accent_tertiary;
 
 $theme_primary_color: $theme_colour_success;
 
