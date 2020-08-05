@@ -1,0 +1,24 @@
+
+# Text/base
+gtk-color-scheme = "text_color:#EAEAEA\nbase_color:#292D3E"
+# Foreground/background
+gtk-color-scheme = "fg_color:#EAEAEA\nbg_color:#292D3E"
+# Selected foreground/background
+gtk-color-scheme = "selected_fg_color:#EAEAEA\nselected_bg_color:#676E95"
+# Titlebar foreground/background
+gtk-color-scheme = "titlebar_fg_color:#EAEAEA\ntitlebar_bg_color:#292D3E"
+# Links
+gtk-color-scheme = "link_color:#82AAFF\nvisited_link_color:#676E95"
+# Panel
+gtk-color-scheme = "topbar_bg_color:#292D3E\ntopbar_fg_color:#EAEAEA"
+
+# Set GTK settings
+gtk-auto-mnemonics              = 1
+gtk-primary-button-warps-slider = 1
+
+# And hand over the control to the theme files
+include "main.rc"
+include "apps.rc"
+include "hacks.rc"
+include "panel.rc"
+include "xfce-notify.rc"
