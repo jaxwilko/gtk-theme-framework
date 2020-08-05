@@ -57,14 +57,16 @@ if [ "$NEW_THEME" ]; then
 fi
 
 if [ "$COMPILE" ]; then
-     [[ "$VERBOSE" ]] && FLAG="-v" || FLAG=""
-     [[ "$FORCE" ]] && FLAG="$FLAG -f"
+    FLAG="-t ${THEME_NAME}"
+    [[ "$VERBOSE" ]] && FLAG="$FLAG -v"
+    [[ "$FORCE" ]] && FLAG="$FLAG -f"
     sh -c "./scripts/compile.sh $FLAG"
 fi
 
 if [ "$INSTALL" ]; then
-     [[ "$VERBOSE" ]] && FLAG="-v" || FLAG=""
-     [[ "$SET_THEME_ACTIVE" ]] && FLAG="$FLAG -s"
-     [[ "$INSTALL_ICONS" ]] && FLAG="$FLAG -o"
+    FLAG="-t ${THEME_NAME}"
+    [[ "$VERBOSE" ]] && FLAG="$FLAG -v"
+    [[ "$SET_THEME_ACTIVE" ]] && FLAG="$FLAG -s"
+    [[ "$INSTALL_ICONS" ]] && FLAG="$FLAG -o"
     sh -c "./scripts/install.sh $FLAG"
 fi
