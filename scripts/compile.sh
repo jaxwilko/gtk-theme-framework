@@ -97,7 +97,6 @@ make_placeholder_replacement() {
         "THEME_COLOUR_FOREGROUND"
         "THEME_COLOUR_DIVIDER"
         "THEME_COLOUR_COMMENT"
-        "THEME_COLOUR_ACCENT"
         "THEME_COLOUR_DANGER"
         "THEME_COLOUR_MID_DANGER"
         "THEME_COLOUR_WARNING"
@@ -105,6 +104,9 @@ make_placeholder_replacement() {
         "THEME_COLOUR_INFO"
         "THEME_COLOUR_DARK_INFO"
         "THEME_COLOUR_TEXT"
+        "THEME_COLOUR_ACCENT_PRIMARY"
+        "THEME_COLOUR_ACCENT_SECONDARY"
+        "THEME_COLOUR_ACCENT_TERTIARY"
     )
 
     mkdir -p "$(dirname "$OUT_FILE")"
@@ -154,22 +156,25 @@ mkdir -p "$ICON_DIR"
 
 say "Generating global color scheme"
 cat > "${PROJ_DIR}/src/global/theme-variables.scss" << SCSS
-\$variant:                  '$THEME_VARIANT';
-\$laptop:                   '$THEME_LAPTOP_MODE';
-\$headerbar:                '$THEME_HEADER_BAR';
-\$panel:                    '$THEME_PANEL';
-\$theme_colour_background:  $THEME_COLOUR_BACKGROUND;
-\$theme_colour_foreground:  $THEME_COLOUR_FOREGROUND;
-\$theme_colour_divider:     $THEME_COLOUR_DIVIDER;
-\$theme_colour_comment:     $THEME_COLOUR_COMMENT;
-\$theme_colour_accent:      $THEME_COLOUR_ACCENT;
-\$theme_colour_danger:      $THEME_COLOUR_DANGER;
-\$theme_colour_mid_danger:  $THEME_COLOUR_MID_DANGER;
-\$theme_colour_warning:     $THEME_COLOUR_WARNING;
-\$theme_colour_success:     $THEME_COLOUR_SUCCESS;
-\$theme_colour_info:        $THEME_COLOUR_INFO;
-\$theme_colour_dark_info:   $THEME_COLOUR_DARK_INFO;
-\$theme_colour_text:        $THEME_COLOUR_TEXT;
+\$variant:                          '$THEME_VARIANT';
+\$laptop:                           '$THEME_LAPTOP_MODE';
+\$headerbar:                        '$THEME_HEADER_BAR';
+\$panel:                            '$THEME_PANEL';
+\$theme_colour_background:          $THEME_COLOUR_BACKGROUND;
+\$theme_colour_foreground:          $THEME_COLOUR_FOREGROUND;
+\$theme_colour_divider:             $THEME_COLOUR_DIVIDER;
+\$theme_colour_comment:             $THEME_COLOUR_COMMENT;
+\$theme_colour_danger:              $THEME_COLOUR_DANGER;
+\$theme_colour_mid_danger:          $THEME_COLOUR_MID_DANGER;
+\$theme_colour_warning:             $THEME_COLOUR_WARNING;
+\$theme_colour_success:             $THEME_COLOUR_SUCCESS;
+\$theme_colour_info:                $THEME_COLOUR_INFO;
+\$theme_colour_dark_info:           $THEME_COLOUR_DARK_INFO;
+\$theme_colour_text:                $THEME_COLOUR_TEXT;
+\$theme_colour_text_highlight:      $THEME_COLOUR_TEXT_HIGHLIGHT;
+\$theme_colour_accent_primary:      $THEME_COLOUR_ACCENT_PRIMARY;
+\$theme_colour_accent_secondary:    $THEME_COLOUR_ACCENT_SECONDARY;
+\$theme_colour_accent_tertiary:     $THEME_COLOUR_ACCENT_TERTIARY;
 SCSS
 
 cat > "${THEME_DIR}/index.theme" <<EOT
@@ -188,10 +193,11 @@ ButtonLayout=menu:minimize,maximize,close
 EOT
 
 if [ "$FORCE" ]; then
-    rm -rf "${THEME_DIR}/gtk-3.0/assets/assets" \
-        "${THEME_DIR}/gtk-2.0/assets/assets" \
-        "${THEME_DIR}/gtk-3.0/assets/window-assets" \
-        "${THEME_DIR}/gtk-3.0/assets/window-assets-contrast"
+    rm -rf "${THEME_DIR}/gnome-shell/assets" \
+        "${THEME_DIR}/gtk-3.0/assets" \
+        "${THEME_DIR}/gtk-2.0/assets"
+
+    mkdir -p "${THEME_DIR}/gnome-shell/assets"
 fi
 
 say "Generating the gtk.css"
@@ -205,14 +211,19 @@ say "Generating common gnome-shell files"
 cp -r "${PROJ_DIR}/src/gnome-shell/extensions"                      "${THEME_DIR}/gnome-shell"
 cp -r "${PROJ_DIR}/src/gnome-shell/message-indicator-symbolic.svg"  "${THEME_DIR}/gnome-shell"
 cp -r "${PROJ_DIR}/src/gnome-shell/pad-osd.css"                     "${THEME_DIR}/gnome-shell"
-cp -r "${PROJ_DIR}/src/gnome-shell/common-assets"                   "${THEME_DIR}/gnome-shell/assets"
+cp -r "${PROJ_DIR}"/src/gnome-shell/common-assets/*.svg             "${THEME_DIR}/gnome-shell/assets"
 cp -r "${PROJ_DIR}"/src/gnome-shell/assets/*.svg                    "${THEME_DIR}/gnome-shell/assets"
-cp -r "${PROJ_DIR}/src/gnome-shell/color-assets/checkbox.svg"       "${THEME_DIR}/gnome-shell/assets/checkbox.svg"
-cp -r "${PROJ_DIR}/src/gnome-shell/color-assets/more-results.svg"   "${THEME_DIR}/gnome-shell/assets/more-results.svg"
-cp -r "${PROJ_DIR}/src/gnome-shell/color-assets/toggle-on.svg"      "${THEME_DIR}/gnome-shell/assets/toggle-on.svg"
-cp -r "${PROJ_DIR}/src/gnome-shell/color-assets/menu-checked.svg"   "${THEME_DIR}/gnome-shell/assets/menu-checked.svg"
-cp -r "${PROJ_DIR}/src/gnome-shell/color-assets/menu.svg"           "${THEME_DIR}/gnome-shell/assets/menu.svg"
-cp -r "${PROJ_DIR}/src/gnome-shell/gnome-shell.css"                 "${THEME_DIR}/gnome-shell/gnome-shell.css"
+
+say "Generating gnome-shell theme assets"
+
+for ASSET in "${PROJ_DIR}"/src/gnome-shell/color-assets/*.svg
+do
+    make_placeholder_replacement "$ASSET" "${THEME_DIR}/gnome-shell/assets/$(basename $ASSET)"
+done
+
+cp "${THEME_DIR}/gnome-shell/assets/no-events.svg"                    "${THEME_DIR}/gnome-shell/no-events.svg"
+cp "${THEME_DIR}/gnome-shell/assets/process-working.svg"              "${THEME_DIR}/gnome-shell/process-working.svg"
+cp "${THEME_DIR}/gnome-shell/assets/no-notifications.svg"             "${THEME_DIR}/gnome-shell/no-notifications.svg"
 
 say "Generating gtk-2.0 gtkrc"
 make_placeholder_replacement "${PROJ_DIR}/src/gtk-2.0/gtkrc-template" "${THEME_DIR}/gtk-2.0/gtkrc"
@@ -223,10 +234,6 @@ cp -r "${PROJ_DIR}"/src/gtk-2.0/common/*.rc                         "${THEME_DIR
 say "Generating gtk-2.0 assets"
 make_placeholder_replacement "${PROJ_DIR}/src/gtk-2.0/assets/assets-template.svg" "${THEME_DIR}/gtk-2.0/assets/assets.svg"
 make_assets "${PROJ_DIR}/src/gtk-2.0/assets/assets.txt" "${THEME_DIR}/gtk-2.0/assets/assets" "${THEME_DIR}/gtk-2.0/assets"
-
-cp "${THEME_DIR}/gnome-shell/assets/no-events.svg"                    "${THEME_DIR}/gnome-shell/no-events.svg"
-cp "${THEME_DIR}/gnome-shell/assets/process-working.svg"              "${THEME_DIR}/gnome-shell/process-working.svg"
-cp "${THEME_DIR}/gnome-shell/assets/no-notifications.svg"             "${THEME_DIR}/gnome-shell/no-notifications.svg"
 
 say "Generating gtk-3.0 assets"
 make_placeholder_replacement "${PROJ_DIR}/src/gtk-3.0/assets/assets-template.svg" "${THEME_DIR}/gtk-3.0/assets/assets.svg"
@@ -242,7 +249,7 @@ say "Generating scalable assets"
 cp -r "${PROJ_DIR}/src/gtk-3.0/assets/scalable" "${THEME_DIR}/gtk-3.0/assets"
 
 say "Generating colour icons"
-make_icons "${THEME_COLOUR_SUCCESS}"
+make_icons "${THEME_COLOUR_ACCENT_SECONDARY}"
 
 say "Resetting theme scss"
 echo "" > "${PROJ_DIR}/src/global/theme-variables.scss"
