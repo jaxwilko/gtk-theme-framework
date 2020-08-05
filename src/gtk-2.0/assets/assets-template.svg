@@ -2007,7 +2007,7 @@
      y="416"
      inkscape:label="#rect6297" />
   <rect
-     style="opacity:0.5;fill:THEME_COLOUR_ACCENT;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.81649661;stroke-opacity:1"
+     style="opacity:0.5;fill:THEME_COLOUR_ACCENT_PRIMARY;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.81649661;stroke-opacity:1"
      id="pathbar_button_prelight"
      width="12"
      height="2"
@@ -2024,6 +2024,6 @@
      height="2"
      width="12"
      id="pathbar_button_active"
-     style="opacity:1;fill:THEME_COLOUR_ACCENT;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.81649661;stroke-opacity:1"
+     style="opacity:1;fill:THEME_COLOUR_ACCENT_PRIMARY;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.81649661;stroke-opacity:1"
      inkscape:label="#rect5320" />
 </svg>
