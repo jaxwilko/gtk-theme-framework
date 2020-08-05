@@ -45,7 +45,7 @@ while getopts hvsocd:t: opts; do
     esac
 done
 
-if [ ! -f "./themes/${THEME_NAME}.sh" ]; then
+if [ ! -f "${PROJ_DIR}/themes/${THEME_NAME}.sh" ]; then
     say "Could not find theme ${THEME_NAME}" "true"
     exit 1
 fi
