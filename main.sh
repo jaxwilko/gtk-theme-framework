@@ -53,7 +53,7 @@ if [ ! -f "${PROJ_DIR}/themes/${THEME_NAME}.sh" ]; then
     exit 1
 fi
 
-if [ ! -d "$THEME_DIR" ]; then
+if [ "$THEME_DIR" ] && [ ! -d "$THEME_DIR" ]; then
     say "${THEME_DIR} does not exists, please create it then run this script again"
     exit 1
 fi
