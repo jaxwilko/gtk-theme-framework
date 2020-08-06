@@ -26,6 +26,7 @@ To install a theme by name (e.g. Amarena) run:
 - `-f` Force png asset recompilation
 - `-o` Install theme icon set
 - `-s` Switch theme/icons active after install
+- `-t theme-name` Pick a theme to compile or install
 - `-n theme-name` Create a new theme config
 
 Therefore, the following:
@@ -72,7 +73,7 @@ Feel free to open a PR with your theme if you want to add it to the project.
 ## Credit
 
 - [vinceliuice](https://github.com/vinceliuice) - Creator of [vimix-gtk-themes](https://github.com/vinceliuice/vimix-gtk-themes)
-which was the base of this project and the [vimix-icon-theme](https://github.com/vinceliuice/vimix-icon-theme) which is the
+which was the base of this project and [vimix-icon-theme](https://github.com/vinceliuice/vimix-icon-theme) which is the
 icon set that can be installed with the theme.
 - [elenapan](https://github.com/elenapan) - Creator of the [Amarena](https://github.com/elenapan/dotfiles/blob/master/.xfiles/amarena)
 colour scheme.
