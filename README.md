@@ -28,6 +28,7 @@ To install a theme by name (e.g. Amarena) run:
 - `-s` Switch theme/icons active after install
 - `-t theme-name` Pick a theme to compile or install
 - `-n theme-name` Create a new theme config
+- `-d /path/to/dir` Pick a custom dir to install the theme to
 
 Therefore, the following:
 
