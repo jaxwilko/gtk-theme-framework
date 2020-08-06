@@ -28,13 +28,13 @@ $titlebar_disabled_secondary_fg_color: if($panel == 'light', rgba($theme_colour_
 $titlebar_track_color:                 if($panel == 'light', rgba($theme_colour_background, 0.26), rgba($theme_colour_background, 0.3));
 $titlebar_divider_color:               if($panel == 'light', rgba($theme_colour_background, 0.12), rgba($theme_colour_background, 0.12));
 
-$inverse_fg_color:                    $white;
-$inverse_secondary_fg_color:          rgba($white, 0.7);
-$inverse_hint_fg_color:               rgba($white, 0.5);
-$inverse_disabled_fg_color:           rgba($white, 0.5);
-$inverse_disabled_secondary_fg_color: rgba($white, 0.3);
-$inverse_track_color:                 rgba($white, 0.3);
-$inverse_divider_color:               rgba($white, 0.12);
+$inverse_fg_color:                    $theme_colour_text;
+$inverse_secondary_fg_color:          rgba($theme_colour_text, 0.7);
+$inverse_hint_fg_color:               rgba($theme_colour_text, 0.5);
+$inverse_disabled_fg_color:           rgba($theme_colour_text, 0.5);
+$inverse_disabled_secondary_fg_color: rgba($theme_colour_text, 0.3);
+$inverse_track_color:                 rgba($theme_colour_text, 0.3);
+$inverse_divider_color:               rgba($theme_colour_text, 0.12);
 
 // Background colors
 $base_color:     $theme_colour_background;
