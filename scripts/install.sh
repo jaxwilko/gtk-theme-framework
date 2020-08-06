@@ -21,6 +21,10 @@ SRC_DIR="${PROJ_DIR}/src"
 
 ROOT_UID=0
 
+if [ -z "${HOME:-}" ]; then
+    HOME="$(cd ~ && pwd)"
+fi
+
 # Destination directory
 if [ "$UID" -eq "$ROOT_UID" ]; then
     DEST_DIR="/usr/share/themes"
