@@ -4,6 +4,10 @@ INKSCAPE=$(command -v inkscape)
 OPTIPNG=$(command -v optipng)
 SASSC=$(command -v sassc)
 
+INKSCAPE_EXPORT=$([[ "$(inkscape --version 2>&1 | head -n 1 | awk '{print $2}')" = 0.* ]] \
+    && echo "--export-png" \
+    || echo "--export-filename")
+
 PROJ_DIR=$(cd $(dirname $(dirname "${0}")) && pwd)
 
 if [ ! "$SASSC" ]; then
@@ -61,7 +65,7 @@ make_assets() {
             say "Rendering ${ASSETS_DIR}/${ASSET}.png"
             $INKSCAPE --export-id="$ASSET" \
                 --export-id-only \
-                --export-png="${ASSETS_DIR}/${ASSET}.png" "$SRC_FILE" > /dev/null
+                "${INKSCAPE_EXPORT}=${ASSETS_DIR}/${ASSET}.png" "$SRC_FILE" > /dev/null 2>&1
 
             make_optipng "${ASSETS_DIR}/${ASSET}.png"
         fi
@@ -82,7 +86,7 @@ make_assets_x2() {
             $INKSCAPE --export-id="$ASSET" \
               --export-dpi=180 \
               --export-id-only \
-              --export-png="${ASSETS_DIR}/${ASSET}@2.png" "$SRC_FILE" > /dev/null
+              "${INKSCAPE_EXPORT}=${ASSETS_DIR}/${ASSET}@2.png" "$SRC_FILE" > /dev/null 2>&1
 
             make_optipng "${ASSETS_DIR}/${ASSET}@2.png"
         fi
