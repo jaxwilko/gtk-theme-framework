@@ -12,6 +12,7 @@ usage() {
     -is                 automatically set the theme/icons active after install
     -t [theme-name]     create a new theme template file
     -n [theme-name]     create a new theme template file
+    -d [/path/to/dir]   install theme to a specific directory
 NOTICE
 }
 
@@ -27,10 +28,11 @@ INSTALL=""
 COMPILE=""
 SET_THEME_ACTIVE=""
 INSTALL_ICONS=""
+THEME_DIR=""
 NEW_THEME=""
 THEME_NAME="palenight"
 
-while getopts hvficost:n: opts; do
+while getopts hvficost:n:d: opts; do
     case ${opts} in
         h) usage && exit 0 ;;
         v) VERBOSE=1 ;;
@@ -39,6 +41,7 @@ while getopts hvficost:n: opts; do
         c) COMPILE=1 ;;
         s) SET_THEME_ACTIVE=1 ;;
         o) INSTALL_ICONS=1 ;;
+        d) THEME_DIR=${OPTARG} ;;
         t) THEME_NAME=${OPTARG} ;;
         n) NEW_THEME=${OPTARG} ;;
         *);;
@@ -47,6 +50,11 @@ done
 
 if [ ! -f "${PROJ_DIR}/themes/${THEME_NAME}.sh" ]; then
     say "Could not find theme ${THEME_NAME}" "true"
+    exit 1
+fi
+
+if [ ! -d "$THEME_DIR" ]; then
+    say "${THEME_DIR} does not exists, please create it then run this script again"
     exit 1
 fi
 
@@ -71,5 +79,6 @@ if [ "$INSTALL" ]; then
     [[ "$VERBOSE" ]] && FLAG="$FLAG -v"
     [[ "$SET_THEME_ACTIVE" ]] && FLAG="$FLAG -s"
     [[ "$INSTALL_ICONS" ]] && FLAG="$FLAG -o"
+    [[ "$THEME_DIR" ]] && FLAG="$FLAG -d ${THEME_DIR}"
     sh -c "${PROJ_DIR}/scripts/install.sh $FLAG"
 fi
