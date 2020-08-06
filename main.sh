@@ -3,14 +3,15 @@
 usage() {
     cat << NOTICE
     OPTIONS
-    -h      show this message
-    -v      print verbose info
-    -f      force asset recompilation
-    -c      compile theme
-    -i      install theme
-    -o      install icons
-    -is     automatically set the theme/icons active after install
-    -n      create a new theme template file
+    -h                  show this message
+    -v                  print verbose info
+    -f                  force asset recompilation
+    -c                  compile theme
+    -i                  install theme
+    -o                  install icons
+    -is                 automatically set the theme/icons active after install
+    -t [theme-name]     create a new theme template file
+    -n [theme-name]     create a new theme template file
 NOTICE
 }
 
