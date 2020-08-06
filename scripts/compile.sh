@@ -196,9 +196,9 @@ if [ "$FORCE" ]; then
     rm -rf "${THEME_DIR}/gnome-shell/assets" \
         "${THEME_DIR}/gtk-3.0/assets" \
         "${THEME_DIR}/gtk-2.0/assets"
-
-    mkdir -p "${THEME_DIR}/gnome-shell/assets"
 fi
+
+mkdir -p "${THEME_DIR}/gnome-shell/assets"
 
 say "Generating the gtk.css"
 make_css "${PROJ_DIR}/src/gtk-3.0/gtk" "${THEME_DIR}/gtk-3.0/gtk"
