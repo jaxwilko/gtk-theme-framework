@@ -81,7 +81,7 @@ if [ "$INSTALL_ICONS" ]; then
 
         if [[ ! -d "${SRC_DIR}/icons/vimix-icon-theme" ]]; then
             echo -e "\033[1;31mInstalling vimix-icons-theme, please show vinceliuice love and support!\033[0m"
-            git clone git@github.com:vinceliuice/vimix-icon-theme.git "${SRC_DIR}/icons/vimix-icon-theme"
+            git clone "https://github.com/vinceliuice/vimix-icon-theme.git" "${SRC_DIR}/icons/vimix-icon-theme"
         fi
 
         sh -c "${SRC_DIR}/icons/vimix-icon-theme/install.sh -n ${THEME_NAME} > /dev/null"
