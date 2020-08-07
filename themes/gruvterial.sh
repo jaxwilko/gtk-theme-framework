@@ -20,7 +20,7 @@ THEME_COLOUR_TEXT_HIGHLIGHT="#FF0000"   # where? #f0c6a6
     
 THEME_COLOUR_ACCENT_PRIMARY="#979A1B"   # Link button # b8bb26
 THEME_COLOUR_ACCENT_SECONDARY="#979A1B" # b8bb26 # page1/2/3
-THEME_COLOUR_ACCENT_TERTIARY="#d3869b"  # Where? #bee4ea
+THEME_COLOUR_ACCENT_TERTIARY="#d3869b"  # Underlines in the shell (topbar/dock/workspace switcher) #bee4ea
 
 
 # Potential colors to use
