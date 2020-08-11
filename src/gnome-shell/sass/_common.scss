@@ -986,7 +986,7 @@ StScrollBar {
     -natural-hpadding: 12px;
     -minimum-hpadding: 6px;
     font-weight: bold;
-    color: $inverse_secondary_fg_color;
+    color: if($panel == 'light', $theme_colour_text, $inverse_secondary_fg_color);
     text-shadow: none;
     transition-duration: $longer_duration;
 
@@ -1004,7 +1004,7 @@ StScrollBar {
     }
 
     &:hover {
-      color: $inverse_fg_color;
+      color: if($panel == 'light', rgba($theme_colour_text, 0.7), $inverse_fg_color);
       text-shadow: none;
 
       .system-status-icon,
@@ -1019,7 +1019,7 @@ StScrollBar {
       // a box-shadow
       background-color: rgba($bg_color, 0.01);
       box-shadow: inset 0 -2px $theme_color;
-      color: $inverse_fg_color;
+      color: if($panel == 'light', rgba($theme_colour_text, 0.7), $inverse_fg_color);
 
       & > .system-status-icon { icon-shadow: none; }
     }
@@ -1081,6 +1081,14 @@ StScrollBar {
     .app-menu-icon > StIcon,
     .popup-menu-arrow {
       icon-shadow: none;
+    }
+  }
+
+  @if($panel == 'light') {
+    &:active, &:overview, &:focus {
+      .panel-button {
+        color: $inverse_fg_color;
+      }
     }
   }
 }
@@ -1655,14 +1663,33 @@ StScrollBar {
 
 .list-search-results { spacing: 3px; }
 
-.search-section-separator { height: 1px; background-color: $inverse_divider_color; }
+.search-section-separator {
+  height: 1px;
+  background-color: $inverse_divider_color;
+}
 
-.list-search-result-content { spacing: 30px; }
-.list-search-result-title { @include font(subheading); color: $inverse_fg_color; spacing: 12px; }
-.list-search-result-description { color: $inverse_secondary_fg_color; }
-.list-search-provider-details { width: 150px; color: $inverse_secondary_fg_color; margin-top: 0.24em; }
-.list-search-provider-content { spacing: 20px; }
-.search-provider-icon { padding: 15px; }
+.list-search-result-content {
+  spacing: 30px;
+}
+.list-search-result-title {
+  @include font(subheading);
+  color: $inverse_fg_color;
+  spacing: 12px;
+}
+.list-search-result-description {
+  color: if ($variant == 'light', $inverse_fg_color, $inverse_secondary_fg_color);
+}
+.list-search-provider-details {
+  width: 150px;
+  color: if ($variant == 'light', $inverse_fg_color, $inverse_secondary_fg_color);
+  margin-top: 0.24em;
+}
+.list-search-provider-content {
+  spacing: 20px;
+}
+.search-provider-icon {
+  padding: 15px;
+}
 
 /* DASHBOARD */
 
