@@ -97,12 +97,16 @@ fi
 
 
 if [ "$SET_THEME_ACTIVE" ]; then
-    say "Setting theme active"
-    gsettings reset org.gnome.desktop.interface gtk-theme
-    gsettings set org.gnome.desktop.interface gtk-theme "$THEME_NAME"
-    gsettings set org.gnome.shell.extensions.user-theme name "Adwaita"
-    gsettings set org.gnome.shell.extensions.user-theme name "$THEME_NAME"
-    say "Setting icons active"
-    gsettings reset org.gnome.desktop.interface icon-theme
-    gsettings set org.gnome.desktop.interface icon-theme "$THEME_NAME"
+    if [[ "$(gsettings get org.gnome.shell.extensions.user-theme name)" == *"No such schema"* ]]; then
+        echo -e "\033[1;31mUnable to automatically set theme, please use tweaks to change theme\033[0m"
+    else
+        say "Setting theme active"
+        gsettings reset org.gnome.desktop.interface gtk-theme
+        gsettings set org.gnome.desktop.interface gtk-theme "$THEME_NAME"
+        gsettings set org.gnome.shell.extensions.user-theme name "Adwaita"
+        gsettings set org.gnome.shell.extensions.user-theme name "$THEME_NAME"
+        say "Setting icons active"
+        gsettings reset org.gnome.desktop.interface icon-theme
+        gsettings set org.gnome.desktop.interface icon-theme "$THEME_NAME"
+    fi
 fi
