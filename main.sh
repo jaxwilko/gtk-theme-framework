@@ -13,6 +13,7 @@ usage() {
     -t [theme-name]     create a new theme template file
     -n [theme-name]     create a new theme template file
     -d [/path/to/dir]   install theme to a specific directory
+    -p [/path/to/dir]   install icons to a specific directory
 NOTICE
 }
 
@@ -29,10 +30,11 @@ COMPILE=""
 SET_THEME_ACTIVE=""
 INSTALL_ICONS=""
 THEME_DIR=""
+ICON_DIR=""
 NEW_THEME=""
 THEME_NAME="palenight"
 
-while getopts hvficost:n:d: opts; do
+while getopts hvficost:n:d:p: opts; do
     case ${opts} in
         h) usage && exit 0 ;;
         v) VERBOSE=1 ;;
@@ -42,6 +44,7 @@ while getopts hvficost:n:d: opts; do
         s) SET_THEME_ACTIVE=1 ;;
         o) INSTALL_ICONS=1 ;;
         d) THEME_DIR=${OPTARG} ;;
+        p) ICON_DIR=${OPTARG} ;;
         t) THEME_NAME=${OPTARG} ;;
         n) NEW_THEME=${OPTARG} ;;
         *);;
@@ -80,5 +83,6 @@ if [ "$INSTALL" ]; then
     [[ "$SET_THEME_ACTIVE" ]] && FLAG="$FLAG -s"
     [[ "$INSTALL_ICONS" ]] && FLAG="$FLAG -o"
     [[ "$THEME_DIR" ]] && FLAG="$FLAG -d ${THEME_DIR}"
+    [[ "$ICON_DIR" ]] && FLAG="$FLAG -p ${ICON_DIR}"
     sh -c "${PROJ_DIR}/scripts/install.sh $FLAG"
 fi

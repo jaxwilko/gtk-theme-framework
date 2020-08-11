@@ -34,14 +34,10 @@ else
     ICON_DEST_DIR="${HOME}/.local/share/icons"
 fi
 
-# create destinations if not exist
-[[ ! -d "$DEST_DIR" ]] && mkdir -p "$DEST_DIR"
-[[ ! -d "$ICON_DEST_DIR" ]] && mkdir -p "$ICON_DEST_DIR"
-
 VERBOSE=""
 THEME_NAME="palenight"
 
-while getopts hvsocd:t: opts; do
+while getopts hvsocd:t:p: opts; do
     case ${opts} in
         h) usage && exit 0 ;;
         v) VERBOSE=1 ;;
@@ -49,6 +45,7 @@ while getopts hvsocd:t: opts; do
         s) SET_THEME_ACTIVE=1 ;;
         o) INSTALL_ICONS=1 ;;
         t) THEME_NAME=${OPTARG} ;;
+        p) ICON_DEST_DIR=${OPTARG} ;;
         *);;
     esac
 done
@@ -57,6 +54,10 @@ if [ ! -f "${PROJ_DIR}/themes/${THEME_NAME}.sh" ]; then
     say "Could not find theme ${THEME_NAME}" "true"
     exit 1
 fi
+
+# create destinations if not exist
+[[ ! -d "$DEST_DIR" ]] && mkdir -p "$DEST_DIR"
+[[ ! -d "$ICON_DEST_DIR" ]] && mkdir -p "$ICON_DEST_DIR"
 
 DIST_DIR="${PROJ_DIR}/dist/${THEME_NAME}"
 
@@ -80,7 +81,7 @@ say "Copying files"
 cp -r "${DIST_DIR}/theme" "$THEME_DIR"
 
 if [ "$INSTALL_ICONS" ]; then
-    say "Installing icons"
+
     if [[ ! -d "${ICON_DEST_DIR}/${THEME_NAME}" ]]; then
 
         if [[ ! -d "${SRC_DIR}/icons/vimix-icon-theme" ]]; then
@@ -88,10 +89,11 @@ if [ "$INSTALL_ICONS" ]; then
             git clone "https://github.com/vinceliuice/vimix-icon-theme.git" "${SRC_DIR}/icons/vimix-icon-theme"
         fi
 
-        sh -c "${SRC_DIR}/icons/vimix-icon-theme/install.sh -n ${THEME_NAME} > /dev/null"
+        [[ "$VERBOSE" ]] && FLAGS=" -v" || FLAGS=""
+        sh -c "${PROJ_DIR}/scripts/vimix-icon-install.sh -n ${THEME_NAME} -d ${ICON_DEST_DIR} ${FLAGS}"
     fi
 
-    cp "${DIST_DIR}"/icons/* "${ICON_DEST_DIR}/${THEME_NAME}-dark/scalable/places"
+    say "Installing icon theme assets"
     cp "${DIST_DIR}"/icons/* "${ICON_DEST_DIR}/${THEME_NAME}/scalable/places"
 fi
 
