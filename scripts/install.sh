@@ -34,6 +34,10 @@ else
     ICON_DEST_DIR="${HOME}/.local/share/icons"
 fi
 
+# create destinations if not exist
+[[ ! -d "$DEST_DIR" ]] && mkdir -p "$DEST_DIR"
+[[ ! -d "$ICON_DEST_DIR" ]] && mkdir -p "$ICON_DEST_DIR"
+
 VERBOSE=""
 THEME_NAME="palenight"
 
