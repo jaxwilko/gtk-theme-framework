@@ -17,6 +17,12 @@ To install a theme by name (e.g. Amarena) run:
 ./main.sh -t amarena -i
 ```
 
+## Available themes
+
+- `palenight` (this is the default theme)
+- `amarena`
+- `gruvterial`
+
 ### Options
 
 - `-h` Show script usage
@@ -102,7 +108,7 @@ which was the base of this project and [vimix-icon-theme](https://github.com/vin
 icon set that can be installed with the theme.
 - [elenapan](https://github.com/elenapan) - Creator of the [Amarena](https://github.com/elenapan/dotfiles/blob/master/.xfiles/amarena)
 colour scheme.
-
+- [JHerseth](https://github.com/JHerseth) - Added the Gruvterial theme, helped find bugs and added documentation.  
 
 ### Palenight
 ![Palenight](https://raw.githubusercontent.com/JaxWilko/material-gtk-framework/develop/.github/examples/palenight.png)
@@ -111,3 +117,7 @@ colour scheme.
 ### Amerena
 ![Amarena](https://raw.githubusercontent.com/JaxWilko/material-gtk-framework/develop/.github/examples/amarena.png)
 ![Amarena Widget Factory](https://raw.githubusercontent.com/JaxWilko/material-gtk-framework/develop/.github/examples/amarena-widget-factory.png)
+
+### Gruvterial
+![Gruvterial](https://raw.githubusercontent.com/JaxWilko/material-gtk-framework/develop/.github/examples/gruvterial.png)
+![Gruvterial Widget Factory](https://raw.githubusercontent.com/JaxWilko/material-gtk-framework/develop/.github/examples/gruvterial-widget-factory.png)
