@@ -28,13 +28,14 @@ $titlebar_disabled_secondary_fg_color: if($panel == 'light', rgba($theme_colour_
 $titlebar_track_color:                 if($panel == 'light', rgba($theme_colour_background, 0.26), rgba($theme_colour_background, 0.3));
 $titlebar_divider_color:               if($panel == 'light', rgba($theme_colour_background, 0.12), rgba($theme_colour_background, 0.12));
 
-$inverse_fg_color:                    $theme_colour_text;
-$inverse_secondary_fg_color:          if($panel == 'light', rgba($theme_colour_text, 0.7), rgba($theme_colour_text, 0.95));
-$inverse_hint_fg_color:               if($panel == 'light', rgba($theme_colour_text, 0.5), rgba($theme_colour_text, 0.8));
-$inverse_disabled_fg_color:           if($panel == 'light', rgba($theme_colour_text, 0.5), rgba($theme_colour_text, 0.8));
-$inverse_disabled_secondary_fg_color: if($panel == 'light', rgba($theme_colour_text, 0.3), rgba($theme_colour_text, 0.7));
-$inverse_track_color:                 if($panel == 'light', rgba($theme_colour_text, 0.3), rgba($theme_colour_text, 0.6));
-$inverse_divider_color:               if($panel == 'light', rgba($theme_colour_text, 0.12), rgba($theme_colour_text, 0.5));
+$inverse_fg_theme_text_color:         invert($theme_colour_text);
+$inverse_fg_color:                    if($variant == 'light', rgba($inverse_fg_theme_text_color, 0.8), $theme_colour_text);
+$inverse_secondary_fg_color:          if($variant == 'light', rgba($theme_colour_text, 0.9), rgba($theme_colour_text, 0.95));
+$inverse_hint_fg_color:               if($variant == 'light', rgba($inverse_fg_theme_text_color, 0.7), rgba($inverse_fg_color, 0.8));
+$inverse_disabled_fg_color:           if($variant == 'light', rgba($inverse_fg_theme_text_color, 0.5), rgba($inverse_fg_color, 0.8));
+$inverse_disabled_secondary_fg_color: if($variant == 'light', rgba($inverse_fg_theme_text_color, 0.3), rgba($inverse_fg_color, 0.7));
+$inverse_track_color:                 if($variant == 'light', rgba($inverse_fg_theme_text_color, 0.5), rgba($inverse_fg_color, 0.6));
+$inverse_divider_color:               if($variant == 'light', rgba($theme_colour_background, 0.12), rgba($inverse_fg_color, 0.5));
 
 // Background colors
 $base_color:     $theme_colour_background;
