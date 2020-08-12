@@ -12,6 +12,7 @@ usage() {
     -is                 automatically set the theme/icons active after install
     -t [theme-name]     create a new theme template file
     -n [theme-name]     create a new theme template file
+    -x [style-name]     create a new theme style
     -d [/path/to/dir]   install theme to a specific directory
     -p [/path/to/dir]   install icons to a specific directory
 NOTICE
@@ -32,9 +33,10 @@ INSTALL_ICONS=""
 THEME_DIR=""
 ICON_DIR=""
 NEW_THEME=""
+NEW_THEME_STYLES=""
 THEME_NAME="palenight"
 
-while getopts hvficost:n:d:p: opts; do
+while getopts hvficost:n:d:p:x: opts; do
     case ${opts} in
         h) usage && exit 0 ;;
         v) VERBOSE=1 ;;
@@ -47,6 +49,7 @@ while getopts hvficost:n:d:p: opts; do
         p) ICON_DIR=${OPTARG} ;;
         t) THEME_NAME=${OPTARG} ;;
         n) NEW_THEME=${OPTARG} ;;
+        x) NEW_THEME_STYLES=${OPTARG} ;;
         *);;
     esac
 done
@@ -66,7 +69,16 @@ if [ "$NEW_THEME" ]; then
         say "Theme ${NEW_THEME} already exists, please pick another name" "true"
         exit 1
     fi
-    cp "${PROJ_DIR}/themes/palenight.sh" "./themes/${NEW_THEME}.sh"
+    cp "${PROJ_DIR}/themes/palenight.sh" "${PROJ_DIR}/themes/${NEW_THEME}.sh"
+    exit 0
+fi
+
+if [ "$NEW_THEME_STYLES" ]; then
+    if [ -d "${PROJ_DIR}/src/${NEW_THEME_STYLES}" ]; then
+        say "Theme styles ${NEW_THEME_STYLES} already exists, please pick another name" "true"
+        exit 1
+    fi
+    cp -r "${PROJ_DIR}/src/material" "${PROJ_DIR}/src/${NEW_THEME_STYLES}"
     exit 0
 fi
 
