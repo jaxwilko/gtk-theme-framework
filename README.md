@@ -1,4 +1,4 @@
-Material GTK Framework
+GTK Theme Framework
 ======
 
 ## Install 
