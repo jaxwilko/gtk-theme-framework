@@ -74,7 +74,15 @@ if [ "$COMPILE" ]; then
     FLAG="-t ${THEME_NAME}"
     [[ "$VERBOSE" ]] && FLAG="$FLAG -v"
     [[ "$FORCE" ]] && FLAG="$FLAG -f"
+
     sh -c "${PROJ_DIR}/scripts/compile.sh $FLAG"
+
+    EXIT_CODE=$?
+
+    if [ ! $EXIT_CODE -eq 0 ]; then
+        say "Compile failed, exiting" "true"
+        exit 1
+    fi
 fi
 
 if [ "$INSTALL" ]; then
@@ -84,5 +92,13 @@ if [ "$INSTALL" ]; then
     [[ "$INSTALL_ICONS" ]] && FLAG="$FLAG -o"
     [[ "$THEME_DIR" ]] && FLAG="$FLAG -d ${THEME_DIR}"
     [[ "$ICON_DIR" ]] && FLAG="$FLAG -p ${ICON_DIR}"
+
     sh -c "${PROJ_DIR}/scripts/install.sh $FLAG"
+
+    EXIT_CODE=$?
+
+    if [ ! $EXIT_CODE -eq 0 ]; then
+        say "Install failed, exiting" "true"
+        exit 1
+    fi
 fi
