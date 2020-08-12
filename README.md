@@ -84,6 +84,7 @@ To force asset recompilation use the `-f` option
 | `THEME_LAPTOP_MODE`               | true/false        | Modifies the amount of padding on things such as title bars           |
 | `THEME_HEADER_BAR`                | light/dark        | Currently not in use                                                  |
 | `THEME_PANEL`                     | light/dark        | Adjusts the gnome-shell panel for light vs dark themes                |
+| `THEME_STYLE`                     | material          | Select which source files to build from                               |
 | `THEME_COLOUR_BACKGROUND`         | Hex colour code   | Background                                                            |
 | `THEME_COLOUR_FOREGROUND`         | Hex colour code   | Accented background                                                   |
 | `THEME_COLOUR_DIVIDER`            | Hex colour code   | Panel division                                                        |
