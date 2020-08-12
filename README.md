@@ -34,6 +34,7 @@ To install a theme by name (e.g. Amarena) run:
 - `-s` Switch theme/icons active after install
 - `-t theme-name` Pick a theme to compile or install
 - `-n theme-name` Create a new theme config
+- `-x style-name` Create a new theme style
 - `-d /path/to/dir` Pick a custom dir to install the theme to
 - `-p /path/to/dir` Pick a custom dir to install icons to
 
@@ -74,6 +75,22 @@ To automatically switch to this theme on completion run:
 To force asset recompilation use the `-f` option
 ```shell script
 ./main.sh -t my-awesome-theme -ciosf
+```
+
+#### Advanced
+
+You can create your own base style to which themes are applied, doing this is more involved and you will 
+need to know scss/css.
+
+To create your own base style run the following:
+```shell script
+./main.sh -x my-awesome-style
+```
+
+Before compiling, make sure that the `THEME_STYLE` var in your theme config points to your new style. I.e.
+
+```shell script
+THEME_STYLE="my-awesome-style"
 ```
 
 ### Theme Variables
