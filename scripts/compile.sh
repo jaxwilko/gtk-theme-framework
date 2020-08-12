@@ -133,6 +133,7 @@ make_icons() {
 VERBOSE=""
 FORCE=""
 THEME_NAME="palenight"
+THEME_STYLE="material"
 
 while getopts hvft: opts; do
     case ${opts} in
@@ -159,7 +160,7 @@ mkdir -p "$THEME_DIR"
 mkdir -p "$ICON_DIR"
 
 say "Generating global color scheme"
-cat > "${PROJ_DIR}/src/global/theme-variables.scss" << SCSS
+cat > "${PROJ_DIR}/src/theme-variables.scss" << SCSS
 \$variant:                          '$THEME_VARIANT';
 \$laptop:                           '$THEME_LAPTOP_MODE';
 \$headerbar:                        '$THEME_HEADER_BAR';
@@ -205,22 +206,22 @@ fi
 mkdir -p "${THEME_DIR}/gnome-shell/assets"
 
 say "Generating the gtk.css"
-make_css "${PROJ_DIR}/src/gtk-3.0/gtk" "${THEME_DIR}/gtk-3.0/gtk"
+make_css "${PROJ_DIR}/src/${THEME_STYLE}/gtk-3.0/gtk" "${THEME_DIR}/gtk-3.0/gtk"
 
 say "Generating the gnome-shell.css"
-make_css "${PROJ_DIR}/src/gnome-shell/gnome-shell" "${THEME_DIR}/gnome-shell/gnome-shell"
+make_css "${PROJ_DIR}/src/${THEME_STYLE}/gnome-shell/gnome-shell" "${THEME_DIR}/gnome-shell/gnome-shell"
 
 say "Generating common gnome-shell files"
 
-cp -r "${PROJ_DIR}/src/gnome-shell/extensions"                      "${THEME_DIR}/gnome-shell"
-cp -r "${PROJ_DIR}/src/gnome-shell/message-indicator-symbolic.svg"  "${THEME_DIR}/gnome-shell"
-cp -r "${PROJ_DIR}/src/gnome-shell/pad-osd.css"                     "${THEME_DIR}/gnome-shell"
-cp -r "${PROJ_DIR}"/src/gnome-shell/common-assets/*.svg             "${THEME_DIR}/gnome-shell/assets"
-cp -r "${PROJ_DIR}"/src/gnome-shell/assets/*.svg                    "${THEME_DIR}/gnome-shell/assets"
+cp -r "${PROJ_DIR}/src/${THEME_STYLE}/gnome-shell/extensions"                      "${THEME_DIR}/gnome-shell"
+cp -r "${PROJ_DIR}/src/${THEME_STYLE}/gnome-shell/message-indicator-symbolic.svg"  "${THEME_DIR}/gnome-shell"
+cp -r "${PROJ_DIR}/src/${THEME_STYLE}/gnome-shell/pad-osd.css"                     "${THEME_DIR}/gnome-shell"
+cp -r "${PROJ_DIR}/src/${THEME_STYLE}"/gnome-shell/common-assets/*.svg             "${THEME_DIR}/gnome-shell/assets"
+cp -r "${PROJ_DIR}/src/${THEME_STYLE}"/gnome-shell/assets/*.svg                    "${THEME_DIR}/gnome-shell/assets"
 
 say "Generating gnome-shell theme assets"
 
-for ASSET in "${PROJ_DIR}"/src/gnome-shell/color-assets/*.svg
+for ASSET in "${PROJ_DIR}/src/${THEME_STYLE}"/gnome-shell/color-assets/*.svg
 do
     make_placeholder_replacement "$ASSET" "${THEME_DIR}/gnome-shell/assets/$(basename $ASSET)"
 done
@@ -230,30 +231,30 @@ cp "${THEME_DIR}/gnome-shell/assets/process-working.svg"              "${THEME_D
 cp "${THEME_DIR}/gnome-shell/assets/no-notifications.svg"             "${THEME_DIR}/gnome-shell/no-notifications.svg"
 
 say "Generating gtk-2.0 gtkrc"
-make_placeholder_replacement "${PROJ_DIR}/src/gtk-2.0/gtkrc-template" "${THEME_DIR}/gtk-2.0/gtkrc"
+make_placeholder_replacement "${PROJ_DIR}/src/${THEME_STYLE}/gtk-2.0/gtkrc-template" "${THEME_DIR}/gtk-2.0/gtkrc"
 
 say "Generating common gtkrc files"
-cp -r "${PROJ_DIR}"/src/gtk-2.0/common/*.rc                         "${THEME_DIR}/gtk-2.0"
+cp -r "${PROJ_DIR}/src/${THEME_STYLE}"/gtk-2.0/common/*.rc                         "${THEME_DIR}/gtk-2.0"
 
 say "Generating gtk-2.0 assets"
-make_placeholder_replacement "${PROJ_DIR}/src/gtk-2.0/assets/assets-template.svg" "${THEME_DIR}/gtk-2.0/assets/assets.svg"
-make_assets "${PROJ_DIR}/src/gtk-2.0/assets/assets.txt" "${THEME_DIR}/gtk-2.0/assets/assets" "${THEME_DIR}/gtk-2.0/assets"
+make_placeholder_replacement "${PROJ_DIR}/src/${THEME_STYLE}/gtk-2.0/assets/assets-template.svg" "${THEME_DIR}/gtk-2.0/assets/assets.svg"
+make_assets "${PROJ_DIR}/src/${THEME_STYLE}/gtk-2.0/assets/assets.txt" "${THEME_DIR}/gtk-2.0/assets/assets" "${THEME_DIR}/gtk-2.0/assets"
 
 say "Generating gtk-3.0 assets"
-make_placeholder_replacement "${PROJ_DIR}/src/gtk-3.0/assets/assets-template.svg" "${THEME_DIR}/gtk-3.0/assets/assets.svg"
-make_assets "${PROJ_DIR}/src/gtk-3.0/assets/assets.txt" "${THEME_DIR}/gtk-3.0/assets/assets" "${THEME_DIR}/gtk-3.0/assets"
-make_assets_x2 "${PROJ_DIR}/src/gtk-3.0/assets/assets.txt" "${THEME_DIR}/gtk-3.0/assets/assets" "${THEME_DIR}/gtk-3.0/assets"
+make_placeholder_replacement "${PROJ_DIR}/src/${THEME_STYLE}/gtk-3.0/assets/assets-template.svg" "${THEME_DIR}/gtk-3.0/assets/assets.svg"
+make_assets "${PROJ_DIR}/src/${THEME_STYLE}/gtk-3.0/assets/assets.txt" "${THEME_DIR}/gtk-3.0/assets/assets" "${THEME_DIR}/gtk-3.0/assets"
+make_assets_x2 "${PROJ_DIR}/src/${THEME_STYLE}/gtk-3.0/assets/assets.txt" "${THEME_DIR}/gtk-3.0/assets/assets" "${THEME_DIR}/gtk-3.0/assets"
 
 say "Generating gtk-3.0 window assets"
-make_placeholder_replacement "${PROJ_DIR}/src/gtk-3.0/assets/window-assets-template.svg" "${THEME_DIR}/gtk-3.0/assets/window-assets.svg"
-make_assets "${PROJ_DIR}/src/gtk-3.0/assets/window-assets.txt" "${THEME_DIR}/gtk-3.0/assets/window-assets" "${THEME_DIR}/gtk-3.0/assets/window-assets"
-make_assets_x2 "${PROJ_DIR}/src/gtk-3.0/assets/window-assets.txt" "${THEME_DIR}/gtk-3.0/assets/window-assets" "${THEME_DIR}/gtk-3.0/assets/window-assets"
+make_placeholder_replacement "${PROJ_DIR}/src/${THEME_STYLE}/gtk-3.0/assets/window-assets-template.svg" "${THEME_DIR}/gtk-3.0/assets/window-assets.svg"
+make_assets "${PROJ_DIR}/src/${THEME_STYLE}/gtk-3.0/assets/window-assets.txt" "${THEME_DIR}/gtk-3.0/assets/window-assets" "${THEME_DIR}/gtk-3.0/assets/window-assets"
+make_assets_x2 "${PROJ_DIR}/src/${THEME_STYLE}/gtk-3.0/assets/window-assets.txt" "${THEME_DIR}/gtk-3.0/assets/window-assets" "${THEME_DIR}/gtk-3.0/assets/window-assets"
 
 say "Generating scalable assets"
-cp -r "${PROJ_DIR}/src/gtk-3.0/assets/scalable" "${THEME_DIR}/gtk-3.0/assets"
+cp -r "${PROJ_DIR}/src/${THEME_STYLE}/gtk-3.0/assets/scalable" "${THEME_DIR}/gtk-3.0/assets"
 
 say "Generating colour icons"
 make_icons "${THEME_COLOUR_ACCENT_SECONDARY}"
 
 say "Resetting theme scss"
-echo "" > "${PROJ_DIR}/src/global/theme-variables.scss"
+echo "" > "${PROJ_DIR}/src/theme-variables.scss"
