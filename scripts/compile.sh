@@ -111,6 +111,8 @@ make_placeholder_replacement() {
         "THEME_COLOUR_ACCENT_PRIMARY"
         "THEME_COLOUR_ACCENT_SECONDARY"
         "THEME_COLOUR_ACCENT_TERTIARY"
+        "THEME_COLOUR_UI_FOREGROUND_PRIMARY"
+        "THEME_COLOUR_UI_FOREGROUND_SECONDARY"
     )
 
     mkdir -p "$(dirname "$OUT_FILE")"
@@ -161,25 +163,27 @@ mkdir -p "$ICON_DIR"
 
 say "Generating global color scheme"
 cat > "${PROJ_DIR}/src/theme-variables.scss" << SCSS
-\$variant:                          '$THEME_VARIANT';
-\$laptop:                           '$THEME_LAPTOP_MODE';
-\$headerbar:                        '$THEME_HEADER_BAR';
-\$panel:                            '$THEME_PANEL';
-\$theme_colour_background:          $THEME_COLOUR_BACKGROUND;
-\$theme_colour_foreground:          $THEME_COLOUR_FOREGROUND;
-\$theme_colour_divider:             $THEME_COLOUR_DIVIDER;
-\$theme_colour_comment:             $THEME_COLOUR_COMMENT;
-\$theme_colour_danger:              $THEME_COLOUR_DANGER;
-\$theme_colour_mid_danger:          $THEME_COLOUR_MID_DANGER;
-\$theme_colour_warning:             $THEME_COLOUR_WARNING;
-\$theme_colour_success:             $THEME_COLOUR_SUCCESS;
-\$theme_colour_info:                $THEME_COLOUR_INFO;
-\$theme_colour_dark_info:           $THEME_COLOUR_DARK_INFO;
-\$theme_colour_text:                $THEME_COLOUR_TEXT;
-\$theme_colour_text_highlight:      $THEME_COLOUR_TEXT_HIGHLIGHT;
-\$theme_colour_accent_primary:      $THEME_COLOUR_ACCENT_PRIMARY;
-\$theme_colour_accent_secondary:    $THEME_COLOUR_ACCENT_SECONDARY;
-\$theme_colour_accent_tertiary:     $THEME_COLOUR_ACCENT_TERTIARY;
+\$variant:                                  '$THEME_VARIANT';
+\$laptop:                                   '$THEME_LAPTOP_MODE';
+\$headerbar:                                '$THEME_HEADER_BAR';
+\$panel:                                    '$THEME_PANEL';
+\$theme_colour_background:                  $THEME_COLOUR_BACKGROUND;
+\$theme_colour_foreground:                  $THEME_COLOUR_FOREGROUND;
+\$theme_colour_divider:                     $THEME_COLOUR_DIVIDER;
+\$theme_colour_comment:                     $THEME_COLOUR_COMMENT;
+\$theme_colour_danger:                      $THEME_COLOUR_DANGER;
+\$theme_colour_mid_danger:                  $THEME_COLOUR_MID_DANGER;
+\$theme_colour_warning:                     $THEME_COLOUR_WARNING;
+\$theme_colour_success:                     $THEME_COLOUR_SUCCESS;
+\$theme_colour_info:                        $THEME_COLOUR_INFO;
+\$theme_colour_dark_info:                   $THEME_COLOUR_DARK_INFO;
+\$theme_colour_text:                        $THEME_COLOUR_TEXT;
+\$theme_colour_text_highlight:              $THEME_COLOUR_TEXT_HIGHLIGHT;
+\$theme_colour_accent_primary:              $THEME_COLOUR_ACCENT_PRIMARY;
+\$theme_colour_accent_secondary:            $THEME_COLOUR_ACCENT_SECONDARY;
+\$theme_colour_accent_tertiary:             $THEME_COLOUR_ACCENT_TERTIARY;
+\$theme_colour_ui_foreground_primary:       $THEME_COLOUR_UI_FOREGROUND_PRIMARY;
+\$theme_colour_ui_foreground_secondary:     $THEME_COLOUR_UI_FOREGROUND_SECONDARY;
 SCSS
 
 cat > "${THEME_DIR}/index.theme" <<EOT

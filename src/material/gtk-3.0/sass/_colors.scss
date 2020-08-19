@@ -60,16 +60,16 @@ $disabled_headerbar_fg_color: $disabled_secondary_inversed_fg_color;
 $headerbar_bg_color: $theme_colour_background;
 
 // Selected and Theme colors
-$primary_color: $theme_colour_comment;
+$primary_color: $theme_colour_ui_foreground_primary;
 $alt_primary_color: $theme_colour_warning;
-$accent_color: $theme_colour_success;
+$accent_color: $theme_colour_ui_foreground_secondary;
 
 $theme_color: $theme_colour_accent_secondary;
-$alt_theme_color: $theme_colour_success;
+$alt_theme_color: $theme_colour_ui_foreground_secondary;
 
 $inverse_theme_color: $theme_colour_info;
 // inputs and checkboxes
-$alt_inverse_theme_color: $theme_colour_comment;
+$alt_inverse_theme_color: $theme_colour_ui_foreground_secondary;
 
 $topbar_theme_color: $theme_color;
 $alt_topbar_theme_color: rgba($theme_colour_background, 0.3);

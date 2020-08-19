@@ -59,47 +59,47 @@
     <linearGradient
        id="color-fg-disabled">
       <stop
-         stop-color="THEME_COLOUR_COMMENT"
+         stop-color="THEME_COLOUR_UI_FOREGROUND_PRIMARY"
          stop-opacity="0.5"
          id="stop11" />
     </linearGradient>
     <linearGradient
        id="color-fg-secondary">
       <stop
-         stop-color="THEME_COLOUR_COMMENT"
+         stop-color="THEME_COLOUR_UI_FOREGROUND_PRIMARY"
          stop-opacity="0.7"
          id="stop14" />
     </linearGradient>
     <linearGradient
        id="color-fg-secondary-disabled">
       <stop
-         stop-color="THEME_COLOUR_COMMENT"
+         stop-color="THEME_COLOUR_UI_FOREGROUND_PRIMARY"
          stop-opacity="0.3"
          id="stop17" />
     </linearGradient>
     <linearGradient
        id="color-divider">
       <stop
-         stop-color="THEME_COLOUR_COMMENT"
+         stop-color="THEME_COLOUR_UI_FOREGROUND_PRIMARY"
          stop-opacity="0.12"
          id="stop20" />
     </linearGradient>
     <linearGradient
        id="color-primary">
       <stop
-         stop-color="THEME_COLOUR_COMMENT"
+         stop-color="THEME_COLOUR_UI_FOREGROUND_PRIMARY"
          id="stop23" />
     </linearGradient>
     <linearGradient
        id="color-accent">
       <stop
-         stop-color="THEME_COLOUR_SUCCESS"
+         stop-color="THEME_COLOUR_UI_FOREGROUND_SECONDARY"
          id="stop26" />
     </linearGradient>
     <linearGradient
        id="color-accent-insensitive">
       <stop
-         stop-color="THEME_COLOUR_SUCCESS"
+         stop-color="THEME_COLOUR_UI_FOREGROUND_SECONDARY"
          stop-opacity="0.5"
          id="stop29" />
     </linearGradient>
