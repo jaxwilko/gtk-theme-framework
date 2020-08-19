@@ -3105,13 +3105,13 @@ radio {
 check:checked, check:indeterminate,
 radio:checked,
 radio:indeterminate {
-  color: #526170;
+  color: #94CF95;
 }
 
 check:checked:disabled, check:indeterminate:disabled,
 radio:checked:disabled,
 radio:indeterminate:disabled {
-  color: rgba(82, 97, 112, 0.4);
+  color: rgba(148, 207, 149, 0.4);
 }
 
 popover check, popover check:hover, popover check:disabled, popover radio, popover radio:hover, popover radio:disabled {
@@ -3309,13 +3309,13 @@ treeview.view radio:disabled {
 treeview.view check:checked, treeview.view check:indeterminate,
 treeview.view radio:checked,
 treeview.view radio:indeterminate {
-  color: #526170;
+  color: #94CF95;
 }
 
 treeview.view check:checked:disabled, treeview.view check:indeterminate:disabled,
 treeview.view radio:checked:disabled,
 treeview.view radio:indeterminate:disabled {
-  color: rgba(82, 97, 112, 0.4);
+  color: rgba(148, 207, 149, 0.4);
 }
 
 treeview.view radio:checked {
