@@ -95,28 +95,30 @@ THEME_STYLE="my-awesome-style"
 
 ### Theme Variables
 
-| Name                              | Options           | Usage                                                                 |
-|-----------------------------------|-------------------|-----------------------------------------------------------------------|
-| `THEME_VARIANT`                   | light/dark        | Adjusts colouring for light vs dark themes                            |
-| `THEME_LAPTOP_MODE`               | true/false        | Modifies the amount of padding on things such as title bars           |
-| `THEME_HEADER_BAR`                | light/dark        | Currently not in use                                                  |
-| `THEME_PANEL`                     | light/dark        | Adjusts the gnome-shell panel for light vs dark themes                |
-| `THEME_STYLE`                     | material          | Select which source files to build from                               |
-| `THEME_COLOUR_BACKGROUND`         | Hex colour code   | Background                                                            |
-| `THEME_COLOUR_FOREGROUND`         | Hex colour code   | Accented background                                                   |
-| `THEME_COLOUR_DIVIDER`            | Hex colour code   | Panel division                                                        |
-| `THEME_COLOUR_COMMENT`            | Hex colour code   | Sliders, toggle button, checkboxes, radiobuttons, choice highlights   |
-| `THEME_COLOUR_DANGER`             | Hex colour code   | Window close button, general error                                    |
-| `THEME_COLOUR_MID_DANGER`         | Hex colour code   | Warning colour for some applications                                  |
-| `THEME_COLOUR_WARNING`            | Hex colour code   | Alt primary colour and window minimize button                         |
-| `THEME_COLOUR_SUCCESS`            | Hex colour code   | "Okay" type buttons, Sliding switches, filled in area in sliders      |
-| `THEME_COLOUR_INFO`               | Hex colour code   | Hover over some types of text buttons                                 |
-| `THEME_COLOUR_DARK_INFO`          | Hex colour code   | Currently not in use                                                  |
-| `THEME_COLOUR_TEXT`               | Hex colour code   | Standard text                                                         |
-| `THEME_COLOUR_TEXT_HIGHLIGHT`     | Hex colour code   | Currently not in use                                                  |
-| `THEME_COLOUR_ACCENT_PRIMARY`     | Hex colour code   | Link button                                                           |
-| `THEME_COLOUR_ACCENT_SECONDARY`   | Hex colour code   | GTK3 theme accent colour                                              |
-| `THEME_COLOUR_ACCENT_TERTIARY`    | Hex colour code   | Underlines in the shell (topbar/dock/workspace switcher)              |
+| Name                                      | Options           | Usage                                                                 |
+|-------------------------------------------|-------------------|-----------------------------------------------------------------------|
+| `THEME_VARIANT`                           | light/dark        | Adjusts colouring for light vs dark themes                            |
+| `THEME_LAPTOP_MODE`                       | true/false        | Modifies the amount of padding on things such as title bars           |
+| `THEME_HEADER_BAR`                        | light/dark        | Currently not in use                                                  |
+| `THEME_PANEL`                             | light/dark        | Adjusts the gnome-shell panel for light vs dark themes                |
+| `THEME_STYLE`                             | material          | Select which source files to build from                               |
+| `THEME_COLOUR_BACKGROUND`                 | Hex colour code   | Background                                                            |
+| `THEME_COLOUR_FOREGROUND`                 | Hex colour code   | Accented background                                                   |
+| `THEME_COLOUR_DIVIDER`                    | Hex colour code   | Panel division                                                        |
+| `THEME_COLOUR_COMMENT`                    | Hex colour code   | Sliders, toggle button, checkboxes, radiobuttons, choice highlights   |
+| `THEME_COLOUR_DANGER`                     | Hex colour code   | Window close button, general error                                    |
+| `THEME_COLOUR_MID_DANGER`                 | Hex colour code   | Warning colour for some applications                                  |
+| `THEME_COLOUR_WARNING`                    | Hex colour code   | Alt primary colour and window minimize button                         |
+| `THEME_COLOUR_SUCCESS`                    | Hex colour code   | "Okay" type buttons, Sliding switches, filled in area in sliders      |
+| `THEME_COLOUR_INFO`                       | Hex colour code   | Hover over some types of text buttons                                 |
+| `THEME_COLOUR_DARK_INFO`                  | Hex colour code   | Currently not in use                                                  |
+| `THEME_COLOUR_TEXT`                       | Hex colour code   | Standard text                                                         |
+| `THEME_COLOUR_TEXT_HIGHLIGHT`             | Hex colour code   | Currently not in use                                                  |
+| `THEME_COLOUR_ACCENT_PRIMARY`             | Hex colour code   | Link button                                                           |
+| `THEME_COLOUR_ACCENT_SECONDARY`           | Hex colour code   | GTK3 theme accent colour                                              |
+| `THEME_COLOUR_ACCENT_TERTIARY`            | Hex colour code   | Underlines in the shell (topbar/dock/workspace switcher)              |
+| `THEME_COLOUR_UI_FOREGROUND_PRIMARY`      | Hex colour code   | Text highlighting, progress bars, active items, links                 |
+| `THEME_COLOUR_UI_FOREGROUND_SECONDARY`    | Hex colour code   | Checkboxes, radio buttons, sliders                                    |
 
 Feel free to open a PR with your theme if you want to add it to the project.
 
