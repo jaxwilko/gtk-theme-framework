@@ -10,9 +10,10 @@ usage() {
     -i                  install theme
     -o                  install icons
     -is                 automatically set the theme/icons active after install
-    -t [theme-name]     create a new theme template file
+    -t [theme-name]     select a theme for compilation or installation
     -n [theme-name]     create a new theme template file
     -x [style-name]     create a new theme style
+    -y [style-name]     force compilation of theme using a specific style
     -d [/path/to/dir]   install theme to a specific directory
     -p [/path/to/dir]   install icons to a specific directory
 NOTICE
@@ -35,8 +36,9 @@ ICON_DIR=""
 NEW_THEME=""
 NEW_THEME_STYLES=""
 THEME_NAME="palenight"
+FORCE_STYLE=""
 
-while getopts hvficost:n:d:p:x: opts; do
+while getopts hvficost:n:d:p:x:y: opts; do
     case ${opts} in
         h) usage && exit 0 ;;
         v) VERBOSE=1 ;;
@@ -50,6 +52,7 @@ while getopts hvficost:n:d:p:x: opts; do
         t) THEME_NAME=${OPTARG} ;;
         n) NEW_THEME=${OPTARG} ;;
         x) NEW_THEME_STYLES=${OPTARG} ;;
+        y) FORCE_STYLE=${OPTARG} ;;
         *);;
     esac
 done
@@ -86,6 +89,7 @@ if [ "$COMPILE" ]; then
     FLAG="-t ${THEME_NAME}"
     [[ "$VERBOSE" ]] && FLAG="$FLAG -v"
     [[ "$FORCE" ]] && FLAG="$FLAG -f"
+    [[ "$FORCE_STYLE" ]] && FLAG="$FLAG -y $FORCE_STYLE"
 
     sh -c "${PROJ_DIR}/scripts/compile.sh $FLAG"
 

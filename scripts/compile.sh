@@ -136,13 +136,16 @@ VERBOSE=""
 FORCE=""
 THEME_NAME="palenight"
 THEME_STYLE="material"
+THEME_TRANSPARENT="true"
+FORCE_STYLE=""
 
-while getopts hvft: opts; do
+while getopts hvft:y: opts; do
     case ${opts} in
         h) usage && exit 0 ;;
         v) VERBOSE=1 ;;
         f) FORCE=1 ;;
         t) THEME_NAME=${OPTARG} ;;
+        y) FORCE_STYLE=${OPTARG} ;;
         *);;
     esac
 done
@@ -154,6 +157,10 @@ fi
 
 say "Loading theme ${THEME_NAME} settings"
 source "${PROJ_DIR}/themes/${THEME_NAME}.sh"
+
+if [ "$FORCE_STYLE" ]; then
+    THEME_STYLE="$FORCE_STYLE"
+fi
 
 THEME_DIR="${PROJ_DIR}/dist/${THEME_NAME}/theme"
 ICON_DIR="${PROJ_DIR}/dist/${THEME_NAME}/icons"
@@ -167,6 +174,7 @@ cat > "${PROJ_DIR}/src/theme-variables.scss" << SCSS
 \$laptop:                                   '$THEME_LAPTOP_MODE';
 \$headerbar:                                '$THEME_HEADER_BAR';
 \$panel:                                    '$THEME_PANEL';
+\$transparency:                             '$THEME_TRANSPARENT';
 \$theme_colour_background:                  $THEME_COLOUR_BACKGROUND;
 \$theme_colour_foreground:                  $THEME_COLOUR_FOREGROUND;
 \$theme_colour_divider:                     $THEME_COLOUR_DIVIDER;
