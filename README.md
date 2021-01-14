@@ -22,6 +22,7 @@ To install a theme by name (e.g. Amarena) run:
 - `palenight` (this is the default theme)
 - `amarena`
 - `gruvterial`
+- `oceanic`
 
 ### Options
 
