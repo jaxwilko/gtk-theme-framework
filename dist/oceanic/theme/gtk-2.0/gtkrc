@@ -4,11 +4,11 @@ gtk-color-scheme = "text_color:#EFF1F5\nbase_color:#263238"
 # Foreground/background
 gtk-color-scheme = "fg_color:#EFF1F5\nbg_color:#263238"
 # Selected foreground/background
-gtk-color-scheme = "selected_fg_color:#EFF1F5\nselected_bg_color:#65737E"
+gtk-color-scheme = "selected_fg_color:#EFF1F5\nselected_bg_color:#E53935"
 # Titlebar foreground/background
 gtk-color-scheme = "titlebar_fg_color:#EFF1F5\ntitlebar_bg_color:#263238"
 # Links
-gtk-color-scheme = "link_color:#39ADB5\nvisited_link_color:#65737E"
+gtk-color-scheme = "link_color:#39ADB5\nvisited_link_color:#E53935"
 # Panel
 gtk-color-scheme = "topbar_bg_color:#263238\ntopbar_fg_color:#EFF1F5"
 

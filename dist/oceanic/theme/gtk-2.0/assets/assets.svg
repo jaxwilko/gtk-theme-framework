@@ -59,35 +59,35 @@
     <linearGradient
        id="color-fg-disabled">
       <stop
-         stop-color="#65737E"
+         stop-color="#E53935"
          stop-opacity="0.5"
          id="stop11" />
     </linearGradient>
     <linearGradient
        id="color-fg-secondary">
       <stop
-         stop-color="#65737E"
+         stop-color="#E53935"
          stop-opacity="0.7"
          id="stop14" />
     </linearGradient>
     <linearGradient
        id="color-fg-secondary-disabled">
       <stop
-         stop-color="#65737E"
+         stop-color="#E53935"
          stop-opacity="0.3"
          id="stop17" />
     </linearGradient>
     <linearGradient
        id="color-divider">
       <stop
-         stop-color="#65737E"
+         stop-color="#E53935"
          stop-opacity="0.12"
          id="stop20" />
     </linearGradient>
     <linearGradient
        id="color-primary">
       <stop
-         stop-color="#65737E"
+         stop-color="#E53935"
          id="stop23" />
     </linearGradient>
     <linearGradient
