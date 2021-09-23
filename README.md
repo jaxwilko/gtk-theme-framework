@@ -23,6 +23,7 @@ To install a theme by name (e.g. Amarena) run:
 - `amarena`
 - `gruvterial`
 - `oceanic`
+- `spacx`
 
 ### Options
 
