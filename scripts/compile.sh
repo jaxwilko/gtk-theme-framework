@@ -4,7 +4,7 @@ INKSCAPE=$(command -v inkscape)
 OPTIPNG=$(command -v optipng)
 SASSC=$(command -v sassc)
 
-INKSCAPE_EXPORT=$([[ "$(inkscape --version 2>&1 | head -n 1 | awk '{print $2}')" = 0.* ]] \
+INKSCAPE_EXPORT=$([[ "$(inkscape --version 2>&1 | tail -n 1 | awk '{print $2}')" = 0.* ]] \
     && echo "--export-png" \
     || echo "--export-filename")
 
